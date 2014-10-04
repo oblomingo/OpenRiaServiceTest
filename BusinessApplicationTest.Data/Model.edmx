@@ -1,0 +1,2887 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VaultsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AppChartCategories">
+          <Key>
+            <PropertyRef Name="ChartCategoryID" />
+          </Key>
+          <Property Name="ChartCategoryID" Type="int" Nullable="false" />
+          <Property Name="ChartCategory" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChartCategoryX" Type="xml" />
+        </EntityType>
+        <EntityType Name="AppCharts">
+          <Key>
+            <PropertyRef Name="ChartID" />
+          </Key>
+          <Property Name="ChartID" Type="int" Nullable="false" />
+          <Property Name="ChartCategoryID" Type="int" Nullable="false" />
+          <Property Name="ChartName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChartDescription" Type="nvarchar" MaxLength="200" />
+          <Property Name="ChartNameX" Type="xml" />
+          <Property Name="ChartDescriptionX" Type="xml" />
+        </EntityType>
+        <EntityType Name="AppModules">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="Module" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModuleX" Type="xml" />
+        </EntityType>
+        <EntityType Name="AppPermissions">
+          <Key>
+            <PropertyRef Name="PermissionID" />
+          </Key>
+          <Property Name="PermissionID" Type="int" Nullable="false" />
+          <Property Name="Permission" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PermissionX" Type="xml" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="DescriptionX" Type="xml" />
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppPictures">
+          <Key>
+            <PropertyRef Name="PictureID" />
+          </Key>
+          <Property Name="PictureID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Picture" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppRoleModules">
+          <Key>
+            <PropertyRef Name="EntryID" />
+          </Key>
+          <Property Name="EntryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppRolePermissions">
+          <Key>
+            <PropertyRef Name="EntryID" />
+          </Key>
+          <Property Name="EntryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PermissionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppRoles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsManager" Type="int" Nullable="false" />
+          <Property Name="IsBuiltIn" Type="int" Nullable="false" />
+          <Property Name="WorkingTimeStart1" Type="time" Precision="0" Nullable="false" />
+          <Property Name="WorkingTimeEnd1" Type="time" Precision="0" Nullable="false" />
+          <Property Name="WorkingTimeStart2" Type="time" Precision="0" Nullable="false" />
+          <Property Name="WorkingTimeEnd2" Type="time" Precision="0" Nullable="false" />
+          <Property Name="WorkingTimeStart3" Type="time" Precision="0" />
+          <Property Name="WorkingTimeEnd3" Type="time" Precision="0" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description_ru" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AppSettings">
+          <Key>
+            <PropertyRef Name="SettingID" />
+          </Key>
+          <Property Name="SettingID" Type="int" Nullable="false" />
+          <Property Name="Setting" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescriptionX" Type="xml" />
+        </EntityType>
+        <EntityType Name="AppStaffs">
+          <Key>
+            <PropertyRef Name="EntryID" />
+          </Key>
+          <Property Name="EntryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ManagerID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppUserCompanies">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyShortName" Type="nvarchar" MaxLength="16" />
+          <Property Name="CompanyAddress" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AppUserCredentials">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="IsAdministrator" Type="tinyint" Nullable="false" />
+          <Property Name="IsLockedOut" Type="tinyint" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" />
+          <Property Name="LastPasswordChangedDate" Type="datetime" />
+          <Property Name="LastLockoutDate" Type="datetime" />
+          <Property Name="FailedPasswordAttemptCount" Type="int" />
+        </EntityType>
+        <EntityType Name="AppUserInfos">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CompanyID" Type="uniqueidentifier" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMailAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhoneNumbers" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AppUserProfiles">
+          <Key>
+            <PropertyRef Name="ProfileID" />
+          </Key>
+          <Property Name="ProfileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PropertyName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="PropertyValue" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppUsers">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="LoweredUserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FriendlyName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="RoleID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CompanyID" Type="uniqueidentifier" />
+          <Property Name="LastActivityDate" Type="datetime" />
+          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeviceTypes">
+          <Key>
+            <PropertyRef Name="DeviceTypeId" />
+          </Key>
+          <Property Name="DeviceTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviceType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="VaultAmountQuantities">
+          <Key>
+            <PropertyRef Name="VaultAmountQuantityId" />
+          </Key>
+          <Property Name="VaultAmountQuantityId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultAmountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultAmountTypeId" Type="int" Nullable="false" />
+          <Property Name="VaultCurrencyDenominationId" Type="int" Nullable="false" />
+          <Property Name="VaultCurrencyId" Type="int" Nullable="false" />
+          <Property Name="Denomination" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Summ" Type="money" />
+          <Property Name="Amount" Type="money" />
+        </EntityType>
+        <EntityType Name="VaultAmounts">
+          <Key>
+            <PropertyRef Name="VaultAmountId" />
+          </Key>
+          <Property Name="VaultAmountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultCurrencyId" Type="int" Nullable="false" />
+          <Property Name="IsCurrent" Type="bit" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultEventId" Type="uniqueidentifier" />
+          <Property Name="VaultRemainder" Type="money" Nullable="false" />
+          <Property Name="CashInTransitIn" Type="money" Nullable="false" />
+          <Property Name="CashInTransitInReserved" Type="money" Nullable="false" />
+          <Property Name="CashInTransitSent" Type="money" Nullable="false" />
+          <Property Name="CashInTransitInPlan" Type="money" Nullable="false" />
+          <Property Name="CashInTransitOut" Type="money" Nullable="false" />
+          <Property Name="CashInTransitOutReserved" Type="money" Nullable="false" />
+          <Property Name="CashInTransitOutSent" Type="money" Nullable="false" />
+          <Property Name="CashInNet" Type="money" Nullable="false" />
+          <Property Name="GrandTotal" Type="money" Nullable="false" />
+          <Property Name="VaultAmountDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VaultAmountTypes">
+          <Key>
+            <PropertyRef Name="VaultAmountTypeId" />
+          </Key>
+          <Property Name="VaultAmountTypeId" Type="int" Nullable="false" />
+          <Property Name="AmountType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VaultCashOrderQuantities">
+          <Key>
+            <PropertyRef Name="VaultCashOrderQuantitiesId" />
+          </Key>
+          <Property Name="VaultCashOrderQuantitiesId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultCashOrderId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultCurrencyDenominationId" Type="int" Nullable="false" />
+          <Property Name="VaultCurrencyId" Type="int" Nullable="false" />
+          <Property Name="Denomination" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Summ" Type="money" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="ExchangeRateToBaseCurrency" Type="float" />
+          <Property Name="AmountBaseCurrency" Type="money" />
+        </EntityType>
+        <EntityType Name="VaultCashOrders">
+          <Key>
+            <PropertyRef Name="VaultCashOrderId" />
+          </Key>
+          <Property Name="VaultCashOrderId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ToDeviceId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FromDeviceId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ToTID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FromTID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CashOrderDate" Type="date" Nullable="false" />
+          <Property Name="NumberIncrement" Type="int" Nullable="false" />
+          <Property Name="VaultCashOrderStatusId" Type="int" Nullable="false" />
+          <Property Name="AcceptedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AcceptedByNotes" Type="nvarchar" MaxLength="200" />
+          <Property Name="AcceptedDate" Type="datetime" Nullable="false" />
+          <Property Name="DeclinedBy" Type="uniqueidentifier" />
+          <Property Name="DeclinedByNotes" Type="nvarchar" MaxLength="200" />
+          <Property Name="DeclinedDate" Type="datetime" />
+          <Property Name="SentToExecuteBy" Type="uniqueidentifier" />
+          <Property Name="SentToExecuteByNotes" Type="nvarchar" MaxLength="200" />
+          <Property Name="SentToExecuteDate" Type="datetime" />
+          <Property Name="CompletedBy" Type="uniqueidentifier" />
+          <Property Name="CompletedByNotes" Type="nvarchar" MaxLength="200" />
+          <Property Name="CompletedDate" Type="datetime" />
+          <Property Name="LastChangesDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VaultCashOrderStatuses">
+          <Key>
+            <PropertyRef Name="VaultCashOrderStatusId" />
+          </Key>
+          <Property Name="VaultCashOrderStatusId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VaultCashPoints">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CashPointId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CashPointTID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsReturnCashToVault" Type="bit" />
+          <Property Name="IsReturnBadCashToVault" Type="bit" />
+          <Property Name="AddedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AddDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VaultCurrencies">
+          <Key>
+            <PropertyRef Name="VaultCurrencyId" />
+          </Key>
+          <Property Name="VaultCurrencyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VaultCurrencyCode" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="VaultCurrencyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsBase" Type="bit" Nullable="false" />
+          <Property Name="IsUsed" Type="bit" Nullable="false" />
+          <Property Name="ExchangeRate" Type="real" Nullable="false" />
+          <Property Name="SortBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VaultCurrencyDenominations">
+          <Key>
+            <PropertyRef Name="VaultCurrencyDenominationId" />
+          </Key>
+          <Property Name="VaultCurrencyDenominationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DenominationName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Denomination" Type="int" Nullable="false" />
+          <Property Name="VaultCurrencyId" Type="int" Nullable="false" />
+          <Property Name="IsUsed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VaultEventAmounts">
+          <Key>
+            <PropertyRef Name="VaultEventAmountId" />
+          </Key>
+          <Property Name="VaultEventAmountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultEventId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultCurrencyId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="ExchangeRateToBaseCurrency" Type="float" Nullable="false" />
+          <Property Name="AmountBaseCurrency" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VaultEventQuantities">
+          <Key>
+            <PropertyRef Name="VaultEventQuantityId" />
+          </Key>
+          <Property Name="VaultEventQuantityId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultEventId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultCurrencyId" Type="int" Nullable="false" />
+          <Property Name="VaultCurrencyDenominationId" Type="int" Nullable="false" />
+          <Property Name="Denomination" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VaultEvents">
+          <Key>
+            <PropertyRef Name="VaultEventId" />
+          </Key>
+          <Property Name="VaultEventId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DeviceId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SecondDeviceId" Type="uniqueidentifier" />
+          <Property Name="SecondDeviceTypeId" Type="int" />
+          <Property Name="EventDateTime" Type="datetime" Nullable="false" />
+          <Property Name="EventDate" Type="date" Nullable="false" />
+          <Property Name="NumberIncrement" Type="int" Nullable="false" />
+          <Property Name="VaultServiceCompanyId" Type="int" Nullable="false" />
+          <Property Name="DeviceAddress" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="VaultEventTypeId" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PreviousEventId" Type="uniqueidentifier" />
+          <Property Name="FriendlyName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VaultEventTypes">
+          <Key>
+            <PropertyRef Name="VaultEventTypeId" />
+          </Key>
+          <Property Name="VaultEventTypeId" Type="int" Nullable="false" />
+          <Property Name="EventType" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VaultNetworkNodes">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ParentId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultNodeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultNodeTypeId" Type="int" Nullable="false" />
+          <Property Name="DeviceId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultNodeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsAssigned" Type="bit" Nullable="false" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="NodeCount" Type="int" Nullable="false" />
+          <Property Name="Longitude" Type="float" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="ZoomLevel" Type="float" />
+        </EntityType>
+        <EntityType Name="VaultNetworkNodeTypes">
+          <Key>
+            <PropertyRef Name="VaultNodeTypeId" />
+          </Key>
+          <Property Name="VaultNodeTypeId" Type="int" Nullable="false" />
+          <Property Name="VaultNodeCategoryId" Type="int" Nullable="false" />
+          <Property Name="VaultNodeType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VaultRecepients">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VaultRecepientId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AddedBy" Type="uniqueidentifier" />
+          <Property Name="AddDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Vaults">
+          <Key>
+            <PropertyRef Name="VaultId" />
+          </Key>
+          <Property Name="VaultId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VaultTypeId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="VaultAddress" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="VaultServiceCompanyId" Type="int" Nullable="false" />
+          <Property Name="WorkingTimeStart" Type="time" Precision="0" Nullable="false" />
+          <Property Name="WorkingTimeEnd" Type="time" Precision="0" Nullable="false" />
+          <Property Name="OrderDuration" Type="int" />
+          <Property Name="MaxLimit" Type="money" />
+          <Property Name="MinLimit" Type="money" />
+        </EntityType>
+        <EntityType Name="VaultServiceCompanies">
+          <Key>
+            <PropertyRef Name="VaultServiceCompanyId" />
+          </Key>
+          <Property Name="VaultServiceCompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CompanyShortName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyAddress" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VaultTypes">
+          <Key>
+            <PropertyRef Name="VaultTypeId" />
+          </Key>
+          <Property Name="VaultTypeId" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AppCharts_AppChartCategories">
+          <End Role="AppChartCategories" Type="Self.AppChartCategories" Multiplicity="1" />
+          <End Role="AppCharts" Type="Self.AppCharts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppChartCategories">
+              <PropertyRef Name="ChartCategoryID" />
+            </Principal>
+            <Dependent Role="AppCharts">
+              <PropertyRef Name="ChartCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppPermissions_AppModules">
+          <End Role="AppModules" Type="Self.AppModules" Multiplicity="1" />
+          <End Role="AppPermissions" Type="Self.AppPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppModules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="AppPermissions">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppRoleModules_AppModules">
+          <End Role="AppModules" Type="Self.AppModules" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppRoleModules" Type="Self.AppRoleModules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppModules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="AppRoleModules">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppRoleModules_AppRoles">
+          <End Role="AppRoles" Type="Self.AppRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppRoleModules" Type="Self.AppRoleModules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppRoles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="AppRoleModules">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppRolePermissions_AppPermissions">
+          <End Role="AppPermissions" Type="Self.AppPermissions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppRolePermissions" Type="Self.AppRolePermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppPermissions">
+              <PropertyRef Name="PermissionID" />
+            </Principal>
+            <Dependent Role="AppRolePermissions">
+              <PropertyRef Name="PermissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppRolePermissions_AppRoles">
+          <End Role="AppRoles" Type="Self.AppRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppRolePermissions" Type="Self.AppRolePermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppRoles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="AppRolePermissions">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppStaffs_AppUsers">
+          <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="1" />
+          <End Role="AppStaffs" Type="Self.AppStaffs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AppStaffs">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppStaffs_AppUsers1">
+          <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppStaffs" Type="Self.AppStaffs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AppStaffs">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUserCredentials_AppUsers">
+          <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppUserCredentials" Type="Self.AppUserCredentials" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AppUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AppUserCredentials">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUserInfos_AppUserCompanies">
+          <End Role="AppUserCompanies" Type="Self.AppUserCompanies" Multiplicity="0..1" />
+          <End Role="AppUserInfos" Type="Self.AppUserInfos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUserCompanies">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="AppUserInfos">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUserInfos_AppUsers">
+          <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppUserInfos" Type="Self.AppUserInfos" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AppUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AppUserInfos">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUserProfiles_AppUsers">
+          <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppUserProfiles" Type="Self.AppUserProfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AppUserProfiles">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUsers_AppRoles">
+          <End Role="AppRoles" Type="Self.AppRoles" Multiplicity="1" />
+          <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppRoles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="AppUsers">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUsers_AppUserCompanies">
+          <End Role="AppUserCompanies" Type="Self.AppUserCompanies" Multiplicity="0..1" />
+          <End Role="AppUsers" Type="Self.AppUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUserCompanies">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="AppUsers">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NetworkNodes_NetworkNodeTypes">
+          <End Role="VaultNetworkNodeTypes" Type="Self.VaultNetworkNodeTypes" Multiplicity="1" />
+          <End Role="VaultNetworkNodes" Type="Self.VaultNetworkNodes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultNetworkNodeTypes">
+              <PropertyRef Name="VaultNodeTypeId" />
+            </Principal>
+            <Dependent Role="VaultNetworkNodes">
+              <PropertyRef Name="VaultNodeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultAmountQuantities_VaultAmounts">
+          <End Role="VaultAmounts" Type="Self.VaultAmounts" Multiplicity="1" />
+          <End Role="VaultAmountQuantities" Type="Self.VaultAmountQuantities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultAmounts">
+              <PropertyRef Name="VaultAmountId" />
+            </Principal>
+            <Dependent Role="VaultAmountQuantities">
+              <PropertyRef Name="VaultAmountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultAmountQuantities_VaultAmountTypes">
+          <End Role="VaultAmountTypes" Type="Self.VaultAmountTypes" Multiplicity="1" />
+          <End Role="VaultAmountQuantities" Type="Self.VaultAmountQuantities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultAmountTypes">
+              <PropertyRef Name="VaultAmountTypeId" />
+            </Principal>
+            <Dependent Role="VaultAmountQuantities">
+              <PropertyRef Name="VaultAmountTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultAmountQuantities_VaultCurrencies">
+          <End Role="VaultCurrencies" Type="Self.VaultCurrencies" Multiplicity="1" />
+          <End Role="VaultAmountQuantities" Type="Self.VaultAmountQuantities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencies">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Principal>
+            <Dependent Role="VaultAmountQuantities">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultAmountQuantities_VaultCurrencyDenominations">
+          <End Role="VaultCurrencyDenominations" Type="Self.VaultCurrencyDenominations" Multiplicity="1" />
+          <End Role="VaultAmountQuantities" Type="Self.VaultAmountQuantities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencyDenominations">
+              <PropertyRef Name="VaultCurrencyDenominationId" />
+            </Principal>
+            <Dependent Role="VaultAmountQuantities">
+              <PropertyRef Name="VaultCurrencyDenominationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultAmounts_VaultEvents">
+          <End Role="VaultEvents" Type="Self.VaultEvents" Multiplicity="0..1" />
+          <End Role="VaultAmounts" Type="Self.VaultAmounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultEvents">
+              <PropertyRef Name="VaultEventId" />
+            </Principal>
+            <Dependent Role="VaultAmounts">
+              <PropertyRef Name="VaultEventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultAmounts_Vaults">
+          <End Role="VaultCurrencies" Type="Self.VaultCurrencies" Multiplicity="1" />
+          <End Role="VaultAmounts" Type="Self.VaultAmounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencies">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Principal>
+            <Dependent Role="VaultAmounts">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultAmounts_Vaults1">
+          <End Role="Vaults" Type="Self.Vaults" Multiplicity="1" />
+          <End Role="VaultAmounts" Type="Self.VaultAmounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaults">
+              <PropertyRef Name="VaultId" />
+            </Principal>
+            <Dependent Role="VaultAmounts">
+              <PropertyRef Name="VaultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCashOrderQuantities_Currencies">
+          <End Role="VaultCurrencies" Type="Self.VaultCurrencies" Multiplicity="1" />
+          <End Role="VaultCashOrderQuantities" Type="Self.VaultCashOrderQuantities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencies">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Principal>
+            <Dependent Role="VaultCashOrderQuantities">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCashOrderQuantities_VaultCashOrders">
+          <End Role="VaultCashOrders" Type="Self.VaultCashOrders" Multiplicity="1" />
+          <End Role="VaultCashOrderQuantities" Type="Self.VaultCashOrderQuantities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCashOrders">
+              <PropertyRef Name="VaultCashOrderId" />
+            </Principal>
+            <Dependent Role="VaultCashOrderQuantities">
+              <PropertyRef Name="VaultCashOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCashOrderQuantities_VaultCurrencyDenominations">
+          <End Role="VaultCurrencyDenominations" Type="Self.VaultCurrencyDenominations" Multiplicity="1" />
+          <End Role="VaultCashOrderQuantities" Type="Self.VaultCashOrderQuantities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencyDenominations">
+              <PropertyRef Name="VaultCurrencyDenominationId" />
+            </Principal>
+            <Dependent Role="VaultCashOrderQuantities">
+              <PropertyRef Name="VaultCurrencyDenominationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCashOrders_CashOrderStatuses">
+          <End Role="VaultCashOrderStatuses" Type="Self.VaultCashOrderStatuses" Multiplicity="1" />
+          <End Role="VaultCashOrders" Type="Self.VaultCashOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCashOrderStatuses">
+              <PropertyRef Name="VaultCashOrderStatusId" />
+            </Principal>
+            <Dependent Role="VaultCashOrders">
+              <PropertyRef Name="VaultCashOrderStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCashOrders_Vaults">
+          <End Role="Vaults" Type="Self.Vaults" Multiplicity="1" />
+          <End Role="VaultCashOrders" Type="Self.VaultCashOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaults">
+              <PropertyRef Name="VaultId" />
+            </Principal>
+            <Dependent Role="VaultCashOrders">
+              <PropertyRef Name="ToDeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCashOrders_Vaults1">
+          <End Role="Vaults" Type="Self.Vaults" Multiplicity="1" />
+          <End Role="VaultCashOrders" Type="Self.VaultCashOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaults">
+              <PropertyRef Name="VaultId" />
+            </Principal>
+            <Dependent Role="VaultCashOrders">
+              <PropertyRef Name="FromDeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCashPoints_Vaults">
+          <End Role="Vaults" Type="Self.Vaults" Multiplicity="1" />
+          <End Role="VaultCashPoints" Type="Self.VaultCashPoints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaults">
+              <PropertyRef Name="VaultId" />
+            </Principal>
+            <Dependent Role="VaultCashPoints">
+              <PropertyRef Name="VaultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCurrencyDenominations_VaultCurrencies">
+          <End Role="VaultCurrencies" Type="Self.VaultCurrencies" Multiplicity="1" />
+          <End Role="VaultCurrencyDenominations" Type="Self.VaultCurrencyDenominations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencies">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Principal>
+            <Dependent Role="VaultCurrencyDenominations">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEventAmounts_Currencies">
+          <End Role="VaultCurrencies" Type="Self.VaultCurrencies" Multiplicity="1" />
+          <End Role="VaultEventAmounts" Type="Self.VaultEventAmounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencies">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Principal>
+            <Dependent Role="VaultEventAmounts">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEventAmounts_VaultEvents">
+          <End Role="VaultEvents" Type="Self.VaultEvents" Multiplicity="1" />
+          <End Role="VaultEventAmounts" Type="Self.VaultEventAmounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultEvents">
+              <PropertyRef Name="VaultEventId" />
+            </Principal>
+            <Dependent Role="VaultEventAmounts">
+              <PropertyRef Name="VaultEventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEventDetails_Currencies">
+          <End Role="VaultCurrencies" Type="Self.VaultCurrencies" Multiplicity="1" />
+          <End Role="VaultEventQuantities" Type="Self.VaultEventQuantities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencies">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Principal>
+            <Dependent Role="VaultEventQuantities">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEventDetails_VaultEvents">
+          <End Role="VaultEvents" Type="Self.VaultEvents" Multiplicity="1" />
+          <End Role="VaultEventQuantities" Type="Self.VaultEventQuantities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultEvents">
+              <PropertyRef Name="VaultEventId" />
+            </Principal>
+            <Dependent Role="VaultEventQuantities">
+              <PropertyRef Name="VaultEventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEventQuantities_VaultCurrencyDenominations">
+          <End Role="VaultCurrencyDenominations" Type="Self.VaultCurrencyDenominations" Multiplicity="1" />
+          <End Role="VaultEventQuantities" Type="Self.VaultEventQuantities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencyDenominations">
+              <PropertyRef Name="VaultCurrencyDenominationId" />
+            </Principal>
+            <Dependent Role="VaultEventQuantities">
+              <PropertyRef Name="VaultCurrencyDenominationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEvents_DeviceTypes">
+          <End Role="DeviceTypes" Type="Self.DeviceTypes" Multiplicity="0..1" />
+          <End Role="VaultEvents" Type="Self.VaultEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceTypes">
+              <PropertyRef Name="DeviceTypeId" />
+            </Principal>
+            <Dependent Role="VaultEvents">
+              <PropertyRef Name="SecondDeviceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEvents_ServiceCompanies">
+          <End Role="VaultServiceCompanies" Type="Self.VaultServiceCompanies" Multiplicity="1" />
+          <End Role="VaultEvents" Type="Self.VaultEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultServiceCompanies">
+              <PropertyRef Name="VaultServiceCompanyId" />
+            </Principal>
+            <Dependent Role="VaultEvents">
+              <PropertyRef Name="VaultServiceCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEvents_VaultEventTypes">
+          <End Role="VaultEventTypes" Type="Self.VaultEventTypes" Multiplicity="1" />
+          <End Role="VaultEvents" Type="Self.VaultEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultEventTypes">
+              <PropertyRef Name="VaultEventTypeId" />
+            </Principal>
+            <Dependent Role="VaultEvents">
+              <PropertyRef Name="VaultEventTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEvents_Vaults">
+          <End Role="Vaults" Type="Self.Vaults" Multiplicity="1" />
+          <End Role="VaultEvents" Type="Self.VaultEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaults">
+              <PropertyRef Name="VaultId" />
+            </Principal>
+            <Dependent Role="VaultEvents">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultRecepients_Vaults">
+          <End Role="Vaults" Type="Self.Vaults" Multiplicity="1" />
+          <End Role="VaultRecepients" Type="Self.VaultRecepients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaults">
+              <PropertyRef Name="VaultId" />
+            </Principal>
+            <Dependent Role="VaultRecepients">
+              <PropertyRef Name="VaultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultRecepients_Vaults_VaultRecepeintId">
+          <End Role="Vaults" Type="Self.Vaults" Multiplicity="1" />
+          <End Role="VaultRecepients" Type="Self.VaultRecepients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaults">
+              <PropertyRef Name="VaultId" />
+            </Principal>
+            <Dependent Role="VaultRecepients">
+              <PropertyRef Name="VaultRecepientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vaults_ServiceCompanies">
+          <End Role="VaultServiceCompanies" Type="Self.VaultServiceCompanies" Multiplicity="1" />
+          <End Role="Vaults" Type="Self.Vaults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultServiceCompanies">
+              <PropertyRef Name="VaultServiceCompanyId" />
+            </Principal>
+            <Dependent Role="Vaults">
+              <PropertyRef Name="VaultServiceCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vaults_VaultTypes">
+          <End Role="VaultTypes" Type="Self.VaultTypes" Multiplicity="1" />
+          <End Role="Vaults" Type="Self.Vaults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultTypes">
+              <PropertyRef Name="VaultTypeId" />
+            </Principal>
+            <Dependent Role="Vaults">
+              <PropertyRef Name="VaultTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VaultsModelStoreContainer">
+          <EntitySet Name="AppChartCategories" EntityType="Self.AppChartCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppCharts" EntityType="Self.AppCharts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppModules" EntityType="Self.AppModules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppPermissions" EntityType="Self.AppPermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppPictures" EntityType="Self.AppPictures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppRoleModules" EntityType="Self.AppRoleModules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppRolePermissions" EntityType="Self.AppRolePermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppRoles" EntityType="Self.AppRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppSettings" EntityType="Self.AppSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppStaffs" EntityType="Self.AppStaffs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppUserCompanies" EntityType="Self.AppUserCompanies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppUserCredentials" EntityType="Self.AppUserCredentials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppUserInfos" EntityType="Self.AppUserInfos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppUserProfiles" EntityType="Self.AppUserProfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppUsers" EntityType="Self.AppUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceTypes" EntityType="Self.DeviceTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultAmountQuantities" EntityType="Self.VaultAmountQuantities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultAmounts" EntityType="Self.VaultAmounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultAmountTypes" EntityType="Self.VaultAmountTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultCashOrderQuantities" EntityType="Self.VaultCashOrderQuantities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultCashOrders" EntityType="Self.VaultCashOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultCashOrderStatuses" EntityType="Self.VaultCashOrderStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultCashPoints" EntityType="Self.VaultCashPoints" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultCurrencies" EntityType="Self.VaultCurrencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultCurrencyDenominations" EntityType="Self.VaultCurrencyDenominations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultEventAmounts" EntityType="Self.VaultEventAmounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultEventQuantities" EntityType="Self.VaultEventQuantities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultEvents" EntityType="Self.VaultEvents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultEventTypes" EntityType="Self.VaultEventTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultNetworkNodes" EntityType="Self.VaultNetworkNodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultNetworkNodeTypes" EntityType="Self.VaultNetworkNodeTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultRecepients" EntityType="Self.VaultRecepients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vaults" EntityType="Self.Vaults" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultServiceCompanies" EntityType="Self.VaultServiceCompanies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaultTypes" EntityType="Self.VaultTypes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AppCharts_AppChartCategories" Association="Self.FK_AppCharts_AppChartCategories">
+            <End Role="AppChartCategories" EntitySet="AppChartCategories" />
+            <End Role="AppCharts" EntitySet="AppCharts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppPermissions_AppModules" Association="Self.FK_AppPermissions_AppModules">
+            <End Role="AppModules" EntitySet="AppModules" />
+            <End Role="AppPermissions" EntitySet="AppPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppRoleModules_AppModules" Association="Self.FK_AppRoleModules_AppModules">
+            <End Role="AppModules" EntitySet="AppModules" />
+            <End Role="AppRoleModules" EntitySet="AppRoleModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppRoleModules_AppRoles" Association="Self.FK_AppRoleModules_AppRoles">
+            <End Role="AppRoles" EntitySet="AppRoles" />
+            <End Role="AppRoleModules" EntitySet="AppRoleModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppRolePermissions_AppPermissions" Association="Self.FK_AppRolePermissions_AppPermissions">
+            <End Role="AppPermissions" EntitySet="AppPermissions" />
+            <End Role="AppRolePermissions" EntitySet="AppRolePermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppRolePermissions_AppRoles" Association="Self.FK_AppRolePermissions_AppRoles">
+            <End Role="AppRoles" EntitySet="AppRoles" />
+            <End Role="AppRolePermissions" EntitySet="AppRolePermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppStaffs_AppUsers" Association="Self.FK_AppStaffs_AppUsers">
+            <End Role="AppUsers" EntitySet="AppUsers" />
+            <End Role="AppStaffs" EntitySet="AppStaffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppStaffs_AppUsers1" Association="Self.FK_AppStaffs_AppUsers1">
+            <End Role="AppUsers" EntitySet="AppUsers" />
+            <End Role="AppStaffs" EntitySet="AppStaffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUserCredentials_AppUsers" Association="Self.FK_AppUserCredentials_AppUsers">
+            <End Role="AppUsers" EntitySet="AppUsers" />
+            <End Role="AppUserCredentials" EntitySet="AppUserCredentials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUserInfos_AppUserCompanies" Association="Self.FK_AppUserInfos_AppUserCompanies">
+            <End Role="AppUserCompanies" EntitySet="AppUserCompanies" />
+            <End Role="AppUserInfos" EntitySet="AppUserInfos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUserInfos_AppUsers" Association="Self.FK_AppUserInfos_AppUsers">
+            <End Role="AppUsers" EntitySet="AppUsers" />
+            <End Role="AppUserInfos" EntitySet="AppUserInfos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUserProfiles_AppUsers" Association="Self.FK_AppUserProfiles_AppUsers">
+            <End Role="AppUsers" EntitySet="AppUsers" />
+            <End Role="AppUserProfiles" EntitySet="AppUserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUsers_AppRoles" Association="Self.FK_AppUsers_AppRoles">
+            <End Role="AppRoles" EntitySet="AppRoles" />
+            <End Role="AppUsers" EntitySet="AppUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUsers_AppUserCompanies" Association="Self.FK_AppUsers_AppUserCompanies">
+            <End Role="AppUserCompanies" EntitySet="AppUserCompanies" />
+            <End Role="AppUsers" EntitySet="AppUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NetworkNodes_NetworkNodeTypes" Association="Self.FK_NetworkNodes_NetworkNodeTypes">
+            <End Role="VaultNetworkNodeTypes" EntitySet="VaultNetworkNodeTypes" />
+            <End Role="VaultNetworkNodes" EntitySet="VaultNetworkNodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultAmountQuantities_VaultAmounts" Association="Self.FK_VaultAmountQuantities_VaultAmounts">
+            <End Role="VaultAmounts" EntitySet="VaultAmounts" />
+            <End Role="VaultAmountQuantities" EntitySet="VaultAmountQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultAmountQuantities_VaultAmountTypes" Association="Self.FK_VaultAmountQuantities_VaultAmountTypes">
+            <End Role="VaultAmountTypes" EntitySet="VaultAmountTypes" />
+            <End Role="VaultAmountQuantities" EntitySet="VaultAmountQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultAmountQuantities_VaultCurrencies" Association="Self.FK_VaultAmountQuantities_VaultCurrencies">
+            <End Role="VaultCurrencies" EntitySet="VaultCurrencies" />
+            <End Role="VaultAmountQuantities" EntitySet="VaultAmountQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultAmountQuantities_VaultCurrencyDenominations" Association="Self.FK_VaultAmountQuantities_VaultCurrencyDenominations">
+            <End Role="VaultCurrencyDenominations" EntitySet="VaultCurrencyDenominations" />
+            <End Role="VaultAmountQuantities" EntitySet="VaultAmountQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultAmounts_VaultEvents" Association="Self.FK_VaultAmounts_VaultEvents">
+            <End Role="VaultEvents" EntitySet="VaultEvents" />
+            <End Role="VaultAmounts" EntitySet="VaultAmounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultAmounts_Vaults" Association="Self.FK_VaultAmounts_Vaults">
+            <End Role="VaultCurrencies" EntitySet="VaultCurrencies" />
+            <End Role="VaultAmounts" EntitySet="VaultAmounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultAmounts_Vaults1" Association="Self.FK_VaultAmounts_Vaults1">
+            <End Role="Vaults" EntitySet="Vaults" />
+            <End Role="VaultAmounts" EntitySet="VaultAmounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCashOrderQuantities_Currencies" Association="Self.FK_VaultCashOrderQuantities_Currencies">
+            <End Role="VaultCurrencies" EntitySet="VaultCurrencies" />
+            <End Role="VaultCashOrderQuantities" EntitySet="VaultCashOrderQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCashOrderQuantities_VaultCashOrders" Association="Self.FK_VaultCashOrderQuantities_VaultCashOrders">
+            <End Role="VaultCashOrders" EntitySet="VaultCashOrders" />
+            <End Role="VaultCashOrderQuantities" EntitySet="VaultCashOrderQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCashOrderQuantities_VaultCurrencyDenominations" Association="Self.FK_VaultCashOrderQuantities_VaultCurrencyDenominations">
+            <End Role="VaultCurrencyDenominations" EntitySet="VaultCurrencyDenominations" />
+            <End Role="VaultCashOrderQuantities" EntitySet="VaultCashOrderQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCashOrders_CashOrderStatuses" Association="Self.FK_VaultCashOrders_CashOrderStatuses">
+            <End Role="VaultCashOrderStatuses" EntitySet="VaultCashOrderStatuses" />
+            <End Role="VaultCashOrders" EntitySet="VaultCashOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCashOrders_Vaults" Association="Self.FK_VaultCashOrders_Vaults">
+            <End Role="Vaults" EntitySet="Vaults" />
+            <End Role="VaultCashOrders" EntitySet="VaultCashOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCashOrders_Vaults1" Association="Self.FK_VaultCashOrders_Vaults1">
+            <End Role="Vaults" EntitySet="Vaults" />
+            <End Role="VaultCashOrders" EntitySet="VaultCashOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCashPoints_Vaults" Association="Self.FK_VaultCashPoints_Vaults">
+            <End Role="Vaults" EntitySet="Vaults" />
+            <End Role="VaultCashPoints" EntitySet="VaultCashPoints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCurrencyDenominations_VaultCurrencies" Association="Self.FK_VaultCurrencyDenominations_VaultCurrencies">
+            <End Role="VaultCurrencies" EntitySet="VaultCurrencies" />
+            <End Role="VaultCurrencyDenominations" EntitySet="VaultCurrencyDenominations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEventAmounts_Currencies" Association="Self.FK_VaultEventAmounts_Currencies">
+            <End Role="VaultCurrencies" EntitySet="VaultCurrencies" />
+            <End Role="VaultEventAmounts" EntitySet="VaultEventAmounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEventAmounts_VaultEvents" Association="Self.FK_VaultEventAmounts_VaultEvents">
+            <End Role="VaultEvents" EntitySet="VaultEvents" />
+            <End Role="VaultEventAmounts" EntitySet="VaultEventAmounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEventDetails_Currencies" Association="Self.FK_VaultEventDetails_Currencies">
+            <End Role="VaultCurrencies" EntitySet="VaultCurrencies" />
+            <End Role="VaultEventQuantities" EntitySet="VaultEventQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEventDetails_VaultEvents" Association="Self.FK_VaultEventDetails_VaultEvents">
+            <End Role="VaultEvents" EntitySet="VaultEvents" />
+            <End Role="VaultEventQuantities" EntitySet="VaultEventQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEventQuantities_VaultCurrencyDenominations" Association="Self.FK_VaultEventQuantities_VaultCurrencyDenominations">
+            <End Role="VaultCurrencyDenominations" EntitySet="VaultCurrencyDenominations" />
+            <End Role="VaultEventQuantities" EntitySet="VaultEventQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEvents_DeviceTypes" Association="Self.FK_VaultEvents_DeviceTypes">
+            <End Role="DeviceTypes" EntitySet="DeviceTypes" />
+            <End Role="VaultEvents" EntitySet="VaultEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEvents_ServiceCompanies" Association="Self.FK_VaultEvents_ServiceCompanies">
+            <End Role="VaultServiceCompanies" EntitySet="VaultServiceCompanies" />
+            <End Role="VaultEvents" EntitySet="VaultEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEvents_VaultEventTypes" Association="Self.FK_VaultEvents_VaultEventTypes">
+            <End Role="VaultEventTypes" EntitySet="VaultEventTypes" />
+            <End Role="VaultEvents" EntitySet="VaultEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEvents_Vaults" Association="Self.FK_VaultEvents_Vaults">
+            <End Role="Vaults" EntitySet="Vaults" />
+            <End Role="VaultEvents" EntitySet="VaultEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultRecepients_Vaults" Association="Self.FK_VaultRecepients_Vaults">
+            <End Role="Vaults" EntitySet="Vaults" />
+            <End Role="VaultRecepients" EntitySet="VaultRecepients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultRecepients_Vaults_VaultRecepeintId" Association="Self.FK_VaultRecepients_Vaults_VaultRecepeintId">
+            <End Role="Vaults" EntitySet="Vaults" />
+            <End Role="VaultRecepients" EntitySet="VaultRecepients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vaults_ServiceCompanies" Association="Self.FK_Vaults_ServiceCompanies">
+            <End Role="VaultServiceCompanies" EntitySet="VaultServiceCompanies" />
+            <End Role="Vaults" EntitySet="Vaults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vaults_VaultTypes" Association="Self.FK_Vaults_VaultTypes">
+            <End Role="VaultTypes" EntitySet="VaultTypes" />
+            <End Role="Vaults" EntitySet="Vaults" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VaultsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AppChartCategory">
+          <Key>
+            <PropertyRef Name="ChartCategoryID" />
+          </Key>
+          <Property Name="ChartCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="ChartCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ChartCategoryX" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AppCharts" Relationship="Self.FK_AppCharts_AppChartCategories" FromRole="AppChartCategories" ToRole="AppCharts" />
+        </EntityType>
+        <EntityType Name="AppChart">
+          <Key>
+            <PropertyRef Name="ChartID" />
+          </Key>
+          <Property Name="ChartID" Type="Int32" Nullable="false" />
+          <Property Name="ChartCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="ChartName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ChartDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ChartNameX" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChartDescriptionX" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AppChartCategory" Relationship="Self.FK_AppCharts_AppChartCategories" FromRole="AppCharts" ToRole="AppChartCategories" />
+        </EntityType>
+        <EntityType Name="AppModule">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="Module" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModuleX" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AppPermissions" Relationship="Self.FK_AppPermissions_AppModules" FromRole="AppModules" ToRole="AppPermissions" />
+          <NavigationProperty Name="AppRoleModules" Relationship="Self.FK_AppRoleModules_AppModules" FromRole="AppModules" ToRole="AppRoleModules" />
+        </EntityType>
+        <EntityType Name="AppPermission">
+          <Key>
+            <PropertyRef Name="PermissionID" />
+          </Key>
+          <Property Name="PermissionID" Type="Int32" Nullable="false" />
+          <Property Name="Permission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PermissionX" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionX" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AppModule" Relationship="Self.FK_AppPermissions_AppModules" FromRole="AppPermissions" ToRole="AppModules" />
+          <NavigationProperty Name="AppRolePermissions" Relationship="Self.FK_AppRolePermissions_AppPermissions" FromRole="AppPermissions" ToRole="AppRolePermissions" />
+        </EntityType>
+        <EntityType Name="AppPicture">
+          <Key>
+            <PropertyRef Name="PictureID" />
+          </Key>
+          <Property Name="PictureID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppRoleModule">
+          <Key>
+            <PropertyRef Name="EntryID" />
+          </Key>
+          <Property Name="EntryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Guid" Nullable="false" />
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AppModule" Relationship="Self.FK_AppRoleModules_AppModules" FromRole="AppRoleModules" ToRole="AppModules" />
+          <NavigationProperty Name="AppRole" Relationship="Self.FK_AppRoleModules_AppRoles" FromRole="AppRoleModules" ToRole="AppRoles" />
+        </EntityType>
+        <EntityType Name="AppRolePermission">
+          <Key>
+            <PropertyRef Name="EntryID" />
+          </Key>
+          <Property Name="EntryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Guid" Nullable="false" />
+          <Property Name="PermissionID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AppPermission" Relationship="Self.FK_AppRolePermissions_AppPermissions" FromRole="AppRolePermissions" ToRole="AppPermissions" />
+          <NavigationProperty Name="AppRole" Relationship="Self.FK_AppRolePermissions_AppRoles" FromRole="AppRolePermissions" ToRole="AppRoles" />
+        </EntityType>
+        <EntityType Name="AppRole">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Guid" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsManager" Type="Int32" Nullable="false" />
+          <Property Name="IsBuiltIn" Type="Int32" Nullable="false" />
+          <Property Name="WorkingTimeStart1" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="WorkingTimeEnd1" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="WorkingTimeStart2" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="WorkingTimeEnd2" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="WorkingTimeStart3" Type="Time" Precision="0" />
+          <Property Name="WorkingTimeEnd3" Type="Time" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description_ru" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AppRoleModules" Relationship="Self.FK_AppRoleModules_AppRoles" FromRole="AppRoles" ToRole="AppRoleModules" />
+          <NavigationProperty Name="AppRolePermissions" Relationship="Self.FK_AppRolePermissions_AppRoles" FromRole="AppRoles" ToRole="AppRolePermissions" />
+          <NavigationProperty Name="AppUsers" Relationship="Self.FK_AppUsers_AppRoles" FromRole="AppRoles" ToRole="AppUsers" />
+        </EntityType>
+        <EntityType Name="AppSetting">
+          <Key>
+            <PropertyRef Name="SettingID" />
+          </Key>
+          <Property Name="SettingID" Type="Int32" Nullable="false" />
+          <Property Name="Setting" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionX" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AppStaff">
+          <Key>
+            <PropertyRef Name="EntryID" />
+          </Key>
+          <Property Name="EntryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ManagerID" Type="Guid" Nullable="false" />
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="AppUser" Relationship="Self.FK_AppStaffs_AppUsers" FromRole="AppStaffs" ToRole="AppUsers" />
+          <NavigationProperty Name="AppUser1" Relationship="Self.FK_AppStaffs_AppUsers1" FromRole="AppStaffs" ToRole="AppUsers" />
+        </EntityType>
+        <EntityType Name="AppUserCompany">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Guid" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyShortName" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AppUserInfos" Relationship="Self.FK_AppUserInfos_AppUserCompanies" FromRole="AppUserCompanies" ToRole="AppUserInfos" />
+          <NavigationProperty Name="AppUsers" Relationship="Self.FK_AppUsers_AppUserCompanies" FromRole="AppUserCompanies" ToRole="AppUsers" />
+        </EntityType>
+        <EntityType Name="AppUserCredential">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsAdministrator" Type="Byte" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Byte" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastLockoutDate" Type="DateTime" Precision="3" />
+          <Property Name="FailedPasswordAttemptCount" Type="Int32" />
+          <NavigationProperty Name="AppUser" Relationship="Self.FK_AppUserCredentials_AppUsers" FromRole="AppUserCredentials" ToRole="AppUsers" />
+        </EntityType>
+        <EntityType Name="AppUserInfo">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="CompanyID" Type="Guid" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumbers" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AppUserCompany" Relationship="Self.FK_AppUserInfos_AppUserCompanies" FromRole="AppUserInfos" ToRole="AppUserCompanies" />
+          <NavigationProperty Name="AppUser" Relationship="Self.FK_AppUserInfos_AppUsers" FromRole="AppUserInfos" ToRole="AppUsers" />
+        </EntityType>
+        <EntityType Name="AppUserProfile">
+          <Key>
+            <PropertyRef Name="ProfileID" />
+          </Key>
+          <Property Name="ProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="PropertyName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PropertyValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AppUser" Relationship="Self.FK_AppUserProfiles_AppUsers" FromRole="AppUserProfiles" ToRole="AppUsers" />
+        </EntityType>
+        <EntityType Name="AppUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoweredUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FriendlyName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleID" Type="Guid" Nullable="false" />
+          <Property Name="CompanyID" Type="Guid" />
+          <Property Name="LastActivityDate" Type="DateTime" Precision="3" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AppRole" Relationship="Self.FK_AppUsers_AppRoles" FromRole="AppUsers" ToRole="AppRoles" />
+          <NavigationProperty Name="AppStaffs" Relationship="Self.FK_AppStaffs_AppUsers" FromRole="AppUsers" ToRole="AppStaffs" />
+          <NavigationProperty Name="AppStaffs1" Relationship="Self.FK_AppStaffs_AppUsers1" FromRole="AppUsers" ToRole="AppStaffs" />
+          <NavigationProperty Name="AppUserCompany" Relationship="Self.FK_AppUsers_AppUserCompanies" FromRole="AppUsers" ToRole="AppUserCompanies" />
+          <NavigationProperty Name="AppUserCredential" Relationship="Self.FK_AppUserCredentials_AppUsers" FromRole="AppUsers" ToRole="AppUserCredentials" />
+          <NavigationProperty Name="AppUserInfo" Relationship="Self.FK_AppUserInfos_AppUsers" FromRole="AppUsers" ToRole="AppUserInfos" />
+          <NavigationProperty Name="AppUserProfiles" Relationship="Self.FK_AppUserProfiles_AppUsers" FromRole="AppUsers" ToRole="AppUserProfiles" />
+        </EntityType>
+        <EntityType Name="DeviceType">
+          <Key>
+            <PropertyRef Name="DeviceTypeId" />
+          </Key>
+          <Property Name="DeviceTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="VaultEvents" Relationship="Self.FK_VaultEvents_DeviceTypes" FromRole="DeviceTypes" ToRole="VaultEvents" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="VaultAmountQuantity">
+          <Key>
+            <PropertyRef Name="VaultAmountQuantityId" />
+          </Key>
+          <Property Name="VaultAmountQuantityId" Type="Guid" Nullable="false" />
+          <Property Name="VaultAmountId" Type="Guid" Nullable="false" />
+          <Property Name="VaultAmountTypeId" Type="Int32" Nullable="false" />
+          <Property Name="VaultCurrencyDenominationId" Type="Int32" Nullable="false" />
+          <Property Name="VaultCurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="Denomination" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Summ" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="VaultAmount" Relationship="Self.FK_VaultAmountQuantities_VaultAmounts" FromRole="VaultAmountQuantities" ToRole="VaultAmounts" />
+          <NavigationProperty Name="VaultAmountType" Relationship="Self.FK_VaultAmountQuantities_VaultAmountTypes" FromRole="VaultAmountQuantities" ToRole="VaultAmountTypes" />
+          <NavigationProperty Name="VaultCurrency" Relationship="Self.FK_VaultAmountQuantities_VaultCurrencies" FromRole="VaultAmountQuantities" ToRole="VaultCurrencies" />
+          <NavigationProperty Name="VaultCurrencyDenomination" Relationship="Self.FK_VaultAmountQuantities_VaultCurrencyDenominations" FromRole="VaultAmountQuantities" ToRole="VaultCurrencyDenominations" />
+        </EntityType>
+        <EntityType Name="VaultAmount">
+          <Key>
+            <PropertyRef Name="VaultAmountId" />
+          </Key>
+          <Property Name="VaultAmountId" Type="Guid" Nullable="false" />
+          <Property Name="VaultId" Type="Guid" Nullable="false" />
+          <Property Name="VaultCurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="IsCurrent" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="VaultEventId" Type="Guid" />
+          <Property Name="VaultRemainder" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CashInTransitIn" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CashInTransitInReserved" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CashInTransitSent" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CashInTransitInPlan" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CashInTransitOut" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CashInTransitOutReserved" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CashInTransitOutSent" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CashInNet" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="GrandTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="VaultAmountDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="VaultAmountQuantities" Relationship="Self.FK_VaultAmountQuantities_VaultAmounts" FromRole="VaultAmounts" ToRole="VaultAmountQuantities" />
+          <NavigationProperty Name="VaultEvent" Relationship="Self.FK_VaultAmounts_VaultEvents" FromRole="VaultAmounts" ToRole="VaultEvents" />
+          <NavigationProperty Name="VaultCurrency" Relationship="Self.FK_VaultAmounts_Vaults" FromRole="VaultAmounts" ToRole="VaultCurrencies" />
+          <NavigationProperty Name="Vault" Relationship="Self.FK_VaultAmounts_Vaults1" FromRole="VaultAmounts" ToRole="Vaults" />
+        </EntityType>
+        <EntityType Name="VaultAmountType">
+          <Key>
+            <PropertyRef Name="VaultAmountTypeId" />
+          </Key>
+          <Property Name="VaultAmountTypeId" Type="Int32" Nullable="false" />
+          <Property Name="AmountType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="VaultAmountQuantities" Relationship="Self.FK_VaultAmountQuantities_VaultAmountTypes" FromRole="VaultAmountTypes" ToRole="VaultAmountQuantities" />
+        </EntityType>
+        <EntityType Name="VaultCashOrderQuantity">
+          <Key>
+            <PropertyRef Name="VaultCashOrderQuantitiesId" />
+          </Key>
+          <Property Name="VaultCashOrderQuantitiesId" Type="Guid" Nullable="false" />
+          <Property Name="VaultCashOrderId" Type="Guid" Nullable="false" />
+          <Property Name="VaultCurrencyDenominationId" Type="Int32" Nullable="false" />
+          <Property Name="VaultCurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="Denomination" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Summ" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ExchangeRateToBaseCurrency" Type="Double" />
+          <Property Name="AmountBaseCurrency" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="VaultCurrency" Relationship="Self.FK_VaultCashOrderQuantities_Currencies" FromRole="VaultCashOrderQuantities" ToRole="VaultCurrencies" />
+          <NavigationProperty Name="VaultCashOrder" Relationship="Self.FK_VaultCashOrderQuantities_VaultCashOrders" FromRole="VaultCashOrderQuantities" ToRole="VaultCashOrders" />
+          <NavigationProperty Name="VaultCurrencyDenomination" Relationship="Self.FK_VaultCashOrderQuantities_VaultCurrencyDenominations" FromRole="VaultCashOrderQuantities" ToRole="VaultCurrencyDenominations" />
+        </EntityType>
+        <EntityType Name="VaultCashOrder">
+          <Key>
+            <PropertyRef Name="VaultCashOrderId" />
+          </Key>
+          <Property Name="VaultCashOrderId" Type="Guid" Nullable="false" />
+          <Property Name="ToDeviceId" Type="Guid" Nullable="false" />
+          <Property Name="FromDeviceId" Type="Guid" Nullable="false" />
+          <Property Name="ToTID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FromTID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CashOrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NumberIncrement" Type="Int32" Nullable="false" />
+          <Property Name="VaultCashOrderStatusId" Type="Int32" Nullable="false" />
+          <Property Name="AcceptedBy" Type="Guid" Nullable="false" />
+          <Property Name="AcceptedByNotes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AcceptedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeclinedBy" Type="Guid" />
+          <Property Name="DeclinedByNotes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DeclinedDate" Type="DateTime" Precision="3" />
+          <Property Name="SentToExecuteBy" Type="Guid" />
+          <Property Name="SentToExecuteByNotes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SentToExecuteDate" Type="DateTime" Precision="3" />
+          <Property Name="CompletedBy" Type="Guid" />
+          <Property Name="CompletedByNotes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CompletedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastChangesDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="VaultCashOrderQuantities" Relationship="Self.FK_VaultCashOrderQuantities_VaultCashOrders" FromRole="VaultCashOrders" ToRole="VaultCashOrderQuantities" />
+          <NavigationProperty Name="VaultCashOrderStatus" Relationship="Self.FK_VaultCashOrders_CashOrderStatuses" FromRole="VaultCashOrders" ToRole="VaultCashOrderStatuses" />
+          <NavigationProperty Name="Vault" Relationship="Self.FK_VaultCashOrders_Vaults" FromRole="VaultCashOrders" ToRole="Vaults" />
+          <NavigationProperty Name="Vault1" Relationship="Self.FK_VaultCashOrders_Vaults1" FromRole="VaultCashOrders" ToRole="Vaults" />
+        </EntityType>
+        <EntityType Name="VaultCashOrderStatus">
+          <Key>
+            <PropertyRef Name="VaultCashOrderStatusId" />
+          </Key>
+          <Property Name="VaultCashOrderStatusId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="VaultCashOrders" Relationship="Self.FK_VaultCashOrders_CashOrderStatuses" FromRole="VaultCashOrderStatuses" ToRole="VaultCashOrders" />
+        </EntityType>
+        <EntityType Name="VaultCashPoint">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="Guid" Nullable="false" />
+          <Property Name="VaultId" Type="Guid" Nullable="false" />
+          <Property Name="CashPointId" Type="Guid" Nullable="false" />
+          <Property Name="CashPointTID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsReturnCashToVault" Type="Boolean" />
+          <Property Name="IsReturnBadCashToVault" Type="Boolean" />
+          <Property Name="AddedBy" Type="Guid" Nullable="false" />
+          <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Vault" Relationship="Self.FK_VaultCashPoints_Vaults" FromRole="VaultCashPoints" ToRole="Vaults" />
+        </EntityType>
+        <EntityType Name="VaultCurrency">
+          <Key>
+            <PropertyRef Name="VaultCurrencyId" />
+          </Key>
+          <Property Name="VaultCurrencyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VaultCurrencyCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="VaultCurrencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsBase" Type="Boolean" Nullable="false" />
+          <Property Name="IsUsed" Type="Boolean" Nullable="false" />
+          <Property Name="ExchangeRate" Type="Single" Nullable="false" />
+          <Property Name="SortBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VaultAmountQuantities" Relationship="Self.FK_VaultAmountQuantities_VaultCurrencies" FromRole="VaultCurrencies" ToRole="VaultAmountQuantities" />
+          <NavigationProperty Name="VaultAmounts" Relationship="Self.FK_VaultAmounts_Vaults" FromRole="VaultCurrencies" ToRole="VaultAmounts" />
+          <NavigationProperty Name="VaultCashOrderQuantities" Relationship="Self.FK_VaultCashOrderQuantities_Currencies" FromRole="VaultCurrencies" ToRole="VaultCashOrderQuantities" />
+          <NavigationProperty Name="VaultCurrencyDenominations" Relationship="Self.FK_VaultCurrencyDenominations_VaultCurrencies" FromRole="VaultCurrencies" ToRole="VaultCurrencyDenominations" />
+          <NavigationProperty Name="VaultEventAmounts" Relationship="Self.FK_VaultEventAmounts_Currencies" FromRole="VaultCurrencies" ToRole="VaultEventAmounts" />
+          <NavigationProperty Name="VaultEventQuantities" Relationship="Self.FK_VaultEventDetails_Currencies" FromRole="VaultCurrencies" ToRole="VaultEventQuantities" />
+        </EntityType>
+        <EntityType Name="VaultCurrencyDenomination">
+          <Key>
+            <PropertyRef Name="VaultCurrencyDenominationId" />
+          </Key>
+          <Property Name="VaultCurrencyDenominationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DenominationName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Denomination" Type="Int32" Nullable="false" />
+          <Property Name="VaultCurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="IsUsed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="VaultAmountQuantities" Relationship="Self.FK_VaultAmountQuantities_VaultCurrencyDenominations" FromRole="VaultCurrencyDenominations" ToRole="VaultAmountQuantities" />
+          <NavigationProperty Name="VaultCashOrderQuantities" Relationship="Self.FK_VaultCashOrderQuantities_VaultCurrencyDenominations" FromRole="VaultCurrencyDenominations" ToRole="VaultCashOrderQuantities" />
+          <NavigationProperty Name="VaultCurrency" Relationship="Self.FK_VaultCurrencyDenominations_VaultCurrencies" FromRole="VaultCurrencyDenominations" ToRole="VaultCurrencies" />
+          <NavigationProperty Name="VaultEventQuantities" Relationship="Self.FK_VaultEventQuantities_VaultCurrencyDenominations" FromRole="VaultCurrencyDenominations" ToRole="VaultEventQuantities" />
+        </EntityType>
+        <EntityType Name="VaultEventAmount">
+          <Key>
+            <PropertyRef Name="VaultEventAmountId" />
+          </Key>
+          <Property Name="VaultEventAmountId" Type="Guid" Nullable="false" />
+          <Property Name="VaultEventId" Type="Guid" Nullable="false" />
+          <Property Name="VaultCurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ExchangeRateToBaseCurrency" Type="Double" Nullable="false" />
+          <Property Name="AmountBaseCurrency" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="VaultCurrency" Relationship="Self.FK_VaultEventAmounts_Currencies" FromRole="VaultEventAmounts" ToRole="VaultCurrencies" />
+          <NavigationProperty Name="VaultEvent" Relationship="Self.FK_VaultEventAmounts_VaultEvents" FromRole="VaultEventAmounts" ToRole="VaultEvents" />
+        </EntityType>
+        <EntityType Name="VaultEventQuantity">
+          <Key>
+            <PropertyRef Name="VaultEventQuantityId" />
+          </Key>
+          <Property Name="VaultEventQuantityId" Type="Guid" Nullable="false" />
+          <Property Name="VaultEventId" Type="Guid" Nullable="false" />
+          <Property Name="VaultCurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="VaultCurrencyDenominationId" Type="Int32" Nullable="false" />
+          <Property Name="Denomination" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VaultCurrency" Relationship="Self.FK_VaultEventDetails_Currencies" FromRole="VaultEventQuantities" ToRole="VaultCurrencies" />
+          <NavigationProperty Name="VaultCurrencyDenomination" Relationship="Self.FK_VaultEventQuantities_VaultCurrencyDenominations" FromRole="VaultEventQuantities" ToRole="VaultCurrencyDenominations" />
+          <NavigationProperty Name="VaultEvent" Relationship="Self.FK_VaultEventDetails_VaultEvents" FromRole="VaultEventQuantities" ToRole="VaultEvents" />
+        </EntityType>
+        <EntityType Name="VaultEvent">
+          <Key>
+            <PropertyRef Name="VaultEventId" />
+          </Key>
+          <Property Name="VaultEventId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="DeviceId" Type="Guid" Nullable="false" />
+          <Property Name="SecondDeviceId" Type="Guid" />
+          <Property Name="SecondDeviceTypeId" Type="Int32" />
+          <Property Name="EventDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EventDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NumberIncrement" Type="Int32" Nullable="false" />
+          <Property Name="VaultServiceCompanyId" Type="Int32" Nullable="false" />
+          <Property Name="DeviceAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VaultEventTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PreviousEventId" Type="Guid" />
+          <Property Name="FriendlyName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DeviceType" Relationship="Self.FK_VaultEvents_DeviceTypes" FromRole="VaultEvents" ToRole="DeviceTypes" />
+          <NavigationProperty Name="VaultAmounts" Relationship="Self.FK_VaultAmounts_VaultEvents" FromRole="VaultEvents" ToRole="VaultAmounts" />
+          <NavigationProperty Name="VaultEventAmounts" Relationship="Self.FK_VaultEventAmounts_VaultEvents" FromRole="VaultEvents" ToRole="VaultEventAmounts" />
+          <NavigationProperty Name="VaultEventQuantities" Relationship="Self.FK_VaultEventDetails_VaultEvents" FromRole="VaultEvents" ToRole="VaultEventQuantities" />
+          <NavigationProperty Name="VaultServiceCompany" Relationship="Self.FK_VaultEvents_ServiceCompanies" FromRole="VaultEvents" ToRole="VaultServiceCompanies" />
+          <NavigationProperty Name="VaultEventType" Relationship="Self.FK_VaultEvents_VaultEventTypes" FromRole="VaultEvents" ToRole="VaultEventTypes" />
+          <NavigationProperty Name="Vault" Relationship="Self.FK_VaultEvents_Vaults" FromRole="VaultEvents" ToRole="Vaults" />
+        </EntityType>
+        <EntityType Name="VaultEventType">
+          <Key>
+            <PropertyRef Name="VaultEventTypeId" />
+          </Key>
+          <Property Name="VaultEventTypeId" Type="Int32" Nullable="false" />
+          <Property Name="EventType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="VaultEvents" Relationship="Self.FK_VaultEvents_VaultEventTypes" FromRole="VaultEventTypes" ToRole="VaultEvents" />
+        </EntityType>
+        <EntityType Name="VaultNetworkNode">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="ParentId" Type="Guid" Nullable="false" />
+          <Property Name="VaultNodeId" Type="Guid" Nullable="false" />
+          <Property Name="VaultNodeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="DeviceId" Type="Guid" Nullable="false" />
+          <Property Name="VaultNodeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsAssigned" Type="Boolean" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="NodeCount" Type="Int32" Nullable="false" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="ZoomLevel" Type="Double" />
+          <NavigationProperty Name="VaultNetworkNodeType" Relationship="Self.FK_NetworkNodes_NetworkNodeTypes" FromRole="VaultNetworkNodes" ToRole="VaultNetworkNodeTypes" />
+        </EntityType>
+        <EntityType Name="VaultNetworkNodeType">
+          <Key>
+            <PropertyRef Name="VaultNodeTypeId" />
+          </Key>
+          <Property Name="VaultNodeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="VaultNodeCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="VaultNodeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="VaultNetworkNodes" Relationship="Self.FK_NetworkNodes_NetworkNodeTypes" FromRole="VaultNetworkNodeTypes" ToRole="VaultNetworkNodes" />
+        </EntityType>
+        <EntityType Name="VaultRecepient">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="Guid" Nullable="false" />
+          <Property Name="VaultId" Type="Guid" Nullable="false" />
+          <Property Name="VaultRecepientId" Type="Guid" Nullable="false" />
+          <Property Name="AddedBy" Type="Guid" />
+          <Property Name="AddDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Vault" Relationship="Self.FK_VaultRecepients_Vaults" FromRole="VaultRecepients" ToRole="Vaults" />
+          <NavigationProperty Name="Vault1" Relationship="Self.FK_VaultRecepients_Vaults_VaultRecepeintId" FromRole="VaultRecepients" ToRole="Vaults" />
+        </EntityType>
+        <EntityType Name="Vault">
+          <Key>
+            <PropertyRef Name="VaultId" />
+          </Key>
+          <Property Name="VaultId" Type="Guid" Nullable="false" />
+          <Property Name="TID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VaultTypeId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="VaultAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VaultServiceCompanyId" Type="Int32" Nullable="false" />
+          <Property Name="WorkingTimeStart" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="WorkingTimeEnd" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="OrderDuration" Type="Int32" />
+          <Property Name="MaxLimit" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MinLimit" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="VaultAmounts" Relationship="Self.FK_VaultAmounts_Vaults1" FromRole="Vaults" ToRole="VaultAmounts" />
+          <NavigationProperty Name="VaultCashOrders" Relationship="Self.FK_VaultCashOrders_Vaults" FromRole="Vaults" ToRole="VaultCashOrders" />
+          <NavigationProperty Name="VaultCashOrders1" Relationship="Self.FK_VaultCashOrders_Vaults1" FromRole="Vaults" ToRole="VaultCashOrders" />
+          <NavigationProperty Name="VaultCashPoints" Relationship="Self.FK_VaultCashPoints_Vaults" FromRole="Vaults" ToRole="VaultCashPoints" />
+          <NavigationProperty Name="VaultEvents" Relationship="Self.FK_VaultEvents_Vaults" FromRole="Vaults" ToRole="VaultEvents" />
+          <NavigationProperty Name="VaultRecepients" Relationship="Self.FK_VaultRecepients_Vaults" FromRole="Vaults" ToRole="VaultRecepients" />
+          <NavigationProperty Name="VaultRecepients1" Relationship="Self.FK_VaultRecepients_Vaults_VaultRecepeintId" FromRole="Vaults" ToRole="VaultRecepients" />
+          <NavigationProperty Name="VaultServiceCompany" Relationship="Self.FK_Vaults_ServiceCompanies" FromRole="Vaults" ToRole="VaultServiceCompanies" />
+          <NavigationProperty Name="VaultType" Relationship="Self.FK_Vaults_VaultTypes" FromRole="Vaults" ToRole="VaultTypes" />
+        </EntityType>
+        <EntityType Name="VaultServiceCompany">
+          <Key>
+            <PropertyRef Name="VaultServiceCompanyId" />
+          </Key>
+          <Property Name="VaultServiceCompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyShortName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="VaultEvents" Relationship="Self.FK_VaultEvents_ServiceCompanies" FromRole="VaultServiceCompanies" ToRole="VaultEvents" />
+          <NavigationProperty Name="Vaults" Relationship="Self.FK_Vaults_ServiceCompanies" FromRole="VaultServiceCompanies" ToRole="Vaults" />
+        </EntityType>
+        <EntityType Name="VaultType">
+          <Key>
+            <PropertyRef Name="VaultTypeId" />
+          </Key>
+          <Property Name="VaultTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vaults" Relationship="Self.FK_Vaults_VaultTypes" FromRole="VaultTypes" ToRole="Vaults" />
+        </EntityType>
+        <Association Name="FK_AppCharts_AppChartCategories">
+          <End Role="AppChartCategories" Type="Self.AppChartCategory" Multiplicity="1" />
+          <End Role="AppCharts" Type="Self.AppChart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppChartCategories">
+              <PropertyRef Name="ChartCategoryID" />
+            </Principal>
+            <Dependent Role="AppCharts">
+              <PropertyRef Name="ChartCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppPermissions_AppModules">
+          <End Role="AppModules" Type="Self.AppModule" Multiplicity="1" />
+          <End Role="AppPermissions" Type="Self.AppPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppModules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="AppPermissions">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppRoleModules_AppModules">
+          <End Role="AppModules" Type="Self.AppModule" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppRoleModules" Type="Self.AppRoleModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppModules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="AppRoleModules">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppRolePermissions_AppPermissions">
+          <End Role="AppPermissions" Type="Self.AppPermission" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppRolePermissions" Type="Self.AppRolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppPermissions">
+              <PropertyRef Name="PermissionID" />
+            </Principal>
+            <Dependent Role="AppRolePermissions">
+              <PropertyRef Name="PermissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppRoleModules_AppRoles">
+          <End Role="AppRoles" Type="Self.AppRole" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppRoleModules" Type="Self.AppRoleModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppRoles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="AppRoleModules">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppRolePermissions_AppRoles">
+          <End Role="AppRoles" Type="Self.AppRole" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppRolePermissions" Type="Self.AppRolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppRoles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="AppRolePermissions">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUsers_AppRoles">
+          <End Role="AppRoles" Type="Self.AppRole" Multiplicity="1" />
+          <End Role="AppUsers" Type="Self.AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppRoles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="AppUsers">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppStaffs_AppUsers">
+          <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="AppStaffs" Type="Self.AppStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AppStaffs">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppStaffs_AppUsers1">
+          <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppStaffs" Type="Self.AppStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AppStaffs">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUserInfos_AppUserCompanies">
+          <End Role="AppUserCompanies" Type="Self.AppUserCompany" Multiplicity="0..1" />
+          <End Role="AppUserInfos" Type="Self.AppUserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUserCompanies">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="AppUserInfos">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUsers_AppUserCompanies">
+          <End Role="AppUserCompanies" Type="Self.AppUserCompany" Multiplicity="0..1" />
+          <End Role="AppUsers" Type="Self.AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUserCompanies">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="AppUsers">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUserCredentials_AppUsers">
+          <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppUserCredentials" Type="Self.AppUserCredential" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AppUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AppUserCredentials">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUserInfos_AppUsers">
+          <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppUserInfos" Type="Self.AppUserInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AppUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AppUserInfos">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUserProfiles_AppUsers">
+          <End Role="AppUsers" Type="Self.AppUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AppUserProfiles" Type="Self.AppUserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AppUserProfiles">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEvents_DeviceTypes">
+          <End Role="DeviceTypes" Type="Self.DeviceType" Multiplicity="0..1" />
+          <End Role="VaultEvents" Type="Self.VaultEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceTypes">
+              <PropertyRef Name="DeviceTypeId" />
+            </Principal>
+            <Dependent Role="VaultEvents">
+              <PropertyRef Name="SecondDeviceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultAmountQuantities_VaultAmounts">
+          <End Role="VaultAmounts" Type="Self.VaultAmount" Multiplicity="1" />
+          <End Role="VaultAmountQuantities" Type="Self.VaultAmountQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultAmounts">
+              <PropertyRef Name="VaultAmountId" />
+            </Principal>
+            <Dependent Role="VaultAmountQuantities">
+              <PropertyRef Name="VaultAmountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultAmountQuantities_VaultAmountTypes">
+          <End Role="VaultAmountTypes" Type="Self.VaultAmountType" Multiplicity="1" />
+          <End Role="VaultAmountQuantities" Type="Self.VaultAmountQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultAmountTypes">
+              <PropertyRef Name="VaultAmountTypeId" />
+            </Principal>
+            <Dependent Role="VaultAmountQuantities">
+              <PropertyRef Name="VaultAmountTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultAmountQuantities_VaultCurrencies">
+          <End Role="VaultCurrencies" Type="Self.VaultCurrency" Multiplicity="1" />
+          <End Role="VaultAmountQuantities" Type="Self.VaultAmountQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencies">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Principal>
+            <Dependent Role="VaultAmountQuantities">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultAmountQuantities_VaultCurrencyDenominations">
+          <End Role="VaultCurrencyDenominations" Type="Self.VaultCurrencyDenomination" Multiplicity="1" />
+          <End Role="VaultAmountQuantities" Type="Self.VaultAmountQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencyDenominations">
+              <PropertyRef Name="VaultCurrencyDenominationId" />
+            </Principal>
+            <Dependent Role="VaultAmountQuantities">
+              <PropertyRef Name="VaultCurrencyDenominationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultAmounts_VaultEvents">
+          <End Role="VaultEvents" Type="Self.VaultEvent" Multiplicity="0..1" />
+          <End Role="VaultAmounts" Type="Self.VaultAmount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultEvents">
+              <PropertyRef Name="VaultEventId" />
+            </Principal>
+            <Dependent Role="VaultAmounts">
+              <PropertyRef Name="VaultEventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultAmounts_Vaults">
+          <End Role="VaultCurrencies" Type="Self.VaultCurrency" Multiplicity="1" />
+          <End Role="VaultAmounts" Type="Self.VaultAmount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencies">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Principal>
+            <Dependent Role="VaultAmounts">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultAmounts_Vaults1">
+          <End Role="Vaults" Type="Self.Vault" Multiplicity="1" />
+          <End Role="VaultAmounts" Type="Self.VaultAmount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaults">
+              <PropertyRef Name="VaultId" />
+            </Principal>
+            <Dependent Role="VaultAmounts">
+              <PropertyRef Name="VaultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCashOrderQuantities_Currencies">
+          <End Role="VaultCurrencies" Type="Self.VaultCurrency" Multiplicity="1" />
+          <End Role="VaultCashOrderQuantities" Type="Self.VaultCashOrderQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencies">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Principal>
+            <Dependent Role="VaultCashOrderQuantities">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCashOrderQuantities_VaultCashOrders">
+          <End Role="VaultCashOrders" Type="Self.VaultCashOrder" Multiplicity="1" />
+          <End Role="VaultCashOrderQuantities" Type="Self.VaultCashOrderQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCashOrders">
+              <PropertyRef Name="VaultCashOrderId" />
+            </Principal>
+            <Dependent Role="VaultCashOrderQuantities">
+              <PropertyRef Name="VaultCashOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCashOrderQuantities_VaultCurrencyDenominations">
+          <End Role="VaultCurrencyDenominations" Type="Self.VaultCurrencyDenomination" Multiplicity="1" />
+          <End Role="VaultCashOrderQuantities" Type="Self.VaultCashOrderQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencyDenominations">
+              <PropertyRef Name="VaultCurrencyDenominationId" />
+            </Principal>
+            <Dependent Role="VaultCashOrderQuantities">
+              <PropertyRef Name="VaultCurrencyDenominationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCashOrders_CashOrderStatuses">
+          <End Role="VaultCashOrderStatuses" Type="Self.VaultCashOrderStatus" Multiplicity="1" />
+          <End Role="VaultCashOrders" Type="Self.VaultCashOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCashOrderStatuses">
+              <PropertyRef Name="VaultCashOrderStatusId" />
+            </Principal>
+            <Dependent Role="VaultCashOrders">
+              <PropertyRef Name="VaultCashOrderStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCashOrders_Vaults">
+          <End Role="Vaults" Type="Self.Vault" Multiplicity="1" />
+          <End Role="VaultCashOrders" Type="Self.VaultCashOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaults">
+              <PropertyRef Name="VaultId" />
+            </Principal>
+            <Dependent Role="VaultCashOrders">
+              <PropertyRef Name="ToDeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCashOrders_Vaults1">
+          <End Role="Vaults" Type="Self.Vault" Multiplicity="1" />
+          <End Role="VaultCashOrders" Type="Self.VaultCashOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaults">
+              <PropertyRef Name="VaultId" />
+            </Principal>
+            <Dependent Role="VaultCashOrders">
+              <PropertyRef Name="FromDeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCashPoints_Vaults">
+          <End Role="Vaults" Type="Self.Vault" Multiplicity="1" />
+          <End Role="VaultCashPoints" Type="Self.VaultCashPoint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaults">
+              <PropertyRef Name="VaultId" />
+            </Principal>
+            <Dependent Role="VaultCashPoints">
+              <PropertyRef Name="VaultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultCurrencyDenominations_VaultCurrencies">
+          <End Role="VaultCurrencies" Type="Self.VaultCurrency" Multiplicity="1" />
+          <End Role="VaultCurrencyDenominations" Type="Self.VaultCurrencyDenomination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencies">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Principal>
+            <Dependent Role="VaultCurrencyDenominations">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEventAmounts_Currencies">
+          <End Role="VaultCurrencies" Type="Self.VaultCurrency" Multiplicity="1" />
+          <End Role="VaultEventAmounts" Type="Self.VaultEventAmount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencies">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Principal>
+            <Dependent Role="VaultEventAmounts">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEventDetails_Currencies">
+          <End Role="VaultCurrencies" Type="Self.VaultCurrency" Multiplicity="1" />
+          <End Role="VaultEventQuantities" Type="Self.VaultEventQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencies">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Principal>
+            <Dependent Role="VaultEventQuantities">
+              <PropertyRef Name="VaultCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEventQuantities_VaultCurrencyDenominations">
+          <End Role="VaultCurrencyDenominations" Type="Self.VaultCurrencyDenomination" Multiplicity="1" />
+          <End Role="VaultEventQuantities" Type="Self.VaultEventQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultCurrencyDenominations">
+              <PropertyRef Name="VaultCurrencyDenominationId" />
+            </Principal>
+            <Dependent Role="VaultEventQuantities">
+              <PropertyRef Name="VaultCurrencyDenominationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEventAmounts_VaultEvents">
+          <End Role="VaultEvents" Type="Self.VaultEvent" Multiplicity="1" />
+          <End Role="VaultEventAmounts" Type="Self.VaultEventAmount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultEvents">
+              <PropertyRef Name="VaultEventId" />
+            </Principal>
+            <Dependent Role="VaultEventAmounts">
+              <PropertyRef Name="VaultEventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEventDetails_VaultEvents">
+          <End Role="VaultEvents" Type="Self.VaultEvent" Multiplicity="1" />
+          <End Role="VaultEventQuantities" Type="Self.VaultEventQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultEvents">
+              <PropertyRef Name="VaultEventId" />
+            </Principal>
+            <Dependent Role="VaultEventQuantities">
+              <PropertyRef Name="VaultEventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEvents_ServiceCompanies">
+          <End Role="VaultServiceCompanies" Type="Self.VaultServiceCompany" Multiplicity="1" />
+          <End Role="VaultEvents" Type="Self.VaultEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultServiceCompanies">
+              <PropertyRef Name="VaultServiceCompanyId" />
+            </Principal>
+            <Dependent Role="VaultEvents">
+              <PropertyRef Name="VaultServiceCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEvents_VaultEventTypes">
+          <End Role="VaultEventTypes" Type="Self.VaultEventType" Multiplicity="1" />
+          <End Role="VaultEvents" Type="Self.VaultEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultEventTypes">
+              <PropertyRef Name="VaultEventTypeId" />
+            </Principal>
+            <Dependent Role="VaultEvents">
+              <PropertyRef Name="VaultEventTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultEvents_Vaults">
+          <End Role="Vaults" Type="Self.Vault" Multiplicity="1" />
+          <End Role="VaultEvents" Type="Self.VaultEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaults">
+              <PropertyRef Name="VaultId" />
+            </Principal>
+            <Dependent Role="VaultEvents">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NetworkNodes_NetworkNodeTypes">
+          <End Role="VaultNetworkNodeTypes" Type="Self.VaultNetworkNodeType" Multiplicity="1" />
+          <End Role="VaultNetworkNodes" Type="Self.VaultNetworkNode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultNetworkNodeTypes">
+              <PropertyRef Name="VaultNodeTypeId" />
+            </Principal>
+            <Dependent Role="VaultNetworkNodes">
+              <PropertyRef Name="VaultNodeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultRecepients_Vaults">
+          <End Role="Vaults" Type="Self.Vault" Multiplicity="1" />
+          <End Role="VaultRecepients" Type="Self.VaultRecepient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaults">
+              <PropertyRef Name="VaultId" />
+            </Principal>
+            <Dependent Role="VaultRecepients">
+              <PropertyRef Name="VaultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VaultRecepients_Vaults_VaultRecepeintId">
+          <End Role="Vaults" Type="Self.Vault" Multiplicity="1" />
+          <End Role="VaultRecepients" Type="Self.VaultRecepient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaults">
+              <PropertyRef Name="VaultId" />
+            </Principal>
+            <Dependent Role="VaultRecepients">
+              <PropertyRef Name="VaultRecepientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vaults_ServiceCompanies">
+          <End Role="VaultServiceCompanies" Type="Self.VaultServiceCompany" Multiplicity="1" />
+          <End Role="Vaults" Type="Self.Vault" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultServiceCompanies">
+              <PropertyRef Name="VaultServiceCompanyId" />
+            </Principal>
+            <Dependent Role="Vaults">
+              <PropertyRef Name="VaultServiceCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vaults_VaultTypes">
+          <End Role="VaultTypes" Type="Self.VaultType" Multiplicity="1" />
+          <End Role="Vaults" Type="Self.Vault" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VaultTypes">
+              <PropertyRef Name="VaultTypeId" />
+            </Principal>
+            <Dependent Role="Vaults">
+              <PropertyRef Name="VaultTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VaultsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AppChartCategories" EntityType="Self.AppChartCategory" />
+          <EntitySet Name="AppCharts" EntityType="Self.AppChart" />
+          <EntitySet Name="AppModules" EntityType="Self.AppModule" />
+          <EntitySet Name="AppPermissions" EntityType="Self.AppPermission" />
+          <EntitySet Name="AppPictures" EntityType="Self.AppPicture" />
+          <EntitySet Name="AppRoleModules" EntityType="Self.AppRoleModule" />
+          <EntitySet Name="AppRolePermissions" EntityType="Self.AppRolePermission" />
+          <EntitySet Name="AppRoles" EntityType="Self.AppRole" />
+          <EntitySet Name="AppSettings" EntityType="Self.AppSetting" />
+          <EntitySet Name="AppStaffs" EntityType="Self.AppStaff" />
+          <EntitySet Name="AppUserCompanies" EntityType="Self.AppUserCompany" />
+          <EntitySet Name="AppUserCredentials" EntityType="Self.AppUserCredential" />
+          <EntitySet Name="AppUserInfos" EntityType="Self.AppUserInfo" />
+          <EntitySet Name="AppUserProfiles" EntityType="Self.AppUserProfile" />
+          <EntitySet Name="AppUsers" EntityType="Self.AppUser" />
+          <EntitySet Name="DeviceTypes" EntityType="Self.DeviceType" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="VaultAmountQuantities" EntityType="Self.VaultAmountQuantity" />
+          <EntitySet Name="VaultAmounts" EntityType="Self.VaultAmount" />
+          <EntitySet Name="VaultAmountTypes" EntityType="Self.VaultAmountType" />
+          <EntitySet Name="VaultCashOrderQuantities" EntityType="Self.VaultCashOrderQuantity" />
+          <EntitySet Name="VaultCashOrders" EntityType="Self.VaultCashOrder" />
+          <EntitySet Name="VaultCashOrderStatuses" EntityType="Self.VaultCashOrderStatus" />
+          <EntitySet Name="VaultCashPoints" EntityType="Self.VaultCashPoint" />
+          <EntitySet Name="VaultCurrencies" EntityType="Self.VaultCurrency" />
+          <EntitySet Name="VaultCurrencyDenominations" EntityType="Self.VaultCurrencyDenomination" />
+          <EntitySet Name="VaultEventAmounts" EntityType="Self.VaultEventAmount" />
+          <EntitySet Name="VaultEventQuantities" EntityType="Self.VaultEventQuantity" />
+          <EntitySet Name="VaultEvents" EntityType="Self.VaultEvent" />
+          <EntitySet Name="VaultEventTypes" EntityType="Self.VaultEventType" />
+          <EntitySet Name="VaultNetworkNodes" EntityType="Self.VaultNetworkNode" />
+          <EntitySet Name="VaultNetworkNodeTypes" EntityType="Self.VaultNetworkNodeType" />
+          <EntitySet Name="VaultRecepients" EntityType="Self.VaultRecepient" />
+          <EntitySet Name="Vaults" EntityType="Self.Vault" />
+          <EntitySet Name="VaultServiceCompanies" EntityType="Self.VaultServiceCompany" />
+          <EntitySet Name="VaultTypes" EntityType="Self.VaultType" />
+          <AssociationSet Name="FK_AppCharts_AppChartCategories" Association="Self.FK_AppCharts_AppChartCategories">
+            <End Role="AppChartCategories" EntitySet="AppChartCategories" />
+            <End Role="AppCharts" EntitySet="AppCharts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppPermissions_AppModules" Association="Self.FK_AppPermissions_AppModules">
+            <End Role="AppModules" EntitySet="AppModules" />
+            <End Role="AppPermissions" EntitySet="AppPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppRoleModules_AppModules" Association="Self.FK_AppRoleModules_AppModules">
+            <End Role="AppModules" EntitySet="AppModules" />
+            <End Role="AppRoleModules" EntitySet="AppRoleModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppRolePermissions_AppPermissions" Association="Self.FK_AppRolePermissions_AppPermissions">
+            <End Role="AppPermissions" EntitySet="AppPermissions" />
+            <End Role="AppRolePermissions" EntitySet="AppRolePermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppRoleModules_AppRoles" Association="Self.FK_AppRoleModules_AppRoles">
+            <End Role="AppRoles" EntitySet="AppRoles" />
+            <End Role="AppRoleModules" EntitySet="AppRoleModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppRolePermissions_AppRoles" Association="Self.FK_AppRolePermissions_AppRoles">
+            <End Role="AppRoles" EntitySet="AppRoles" />
+            <End Role="AppRolePermissions" EntitySet="AppRolePermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUsers_AppRoles" Association="Self.FK_AppUsers_AppRoles">
+            <End Role="AppRoles" EntitySet="AppRoles" />
+            <End Role="AppUsers" EntitySet="AppUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppStaffs_AppUsers" Association="Self.FK_AppStaffs_AppUsers">
+            <End Role="AppUsers" EntitySet="AppUsers" />
+            <End Role="AppStaffs" EntitySet="AppStaffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppStaffs_AppUsers1" Association="Self.FK_AppStaffs_AppUsers1">
+            <End Role="AppUsers" EntitySet="AppUsers" />
+            <End Role="AppStaffs" EntitySet="AppStaffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUserInfos_AppUserCompanies" Association="Self.FK_AppUserInfos_AppUserCompanies">
+            <End Role="AppUserCompanies" EntitySet="AppUserCompanies" />
+            <End Role="AppUserInfos" EntitySet="AppUserInfos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUsers_AppUserCompanies" Association="Self.FK_AppUsers_AppUserCompanies">
+            <End Role="AppUserCompanies" EntitySet="AppUserCompanies" />
+            <End Role="AppUsers" EntitySet="AppUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUserCredentials_AppUsers" Association="Self.FK_AppUserCredentials_AppUsers">
+            <End Role="AppUsers" EntitySet="AppUsers" />
+            <End Role="AppUserCredentials" EntitySet="AppUserCredentials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUserInfos_AppUsers" Association="Self.FK_AppUserInfos_AppUsers">
+            <End Role="AppUsers" EntitySet="AppUsers" />
+            <End Role="AppUserInfos" EntitySet="AppUserInfos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUserProfiles_AppUsers" Association="Self.FK_AppUserProfiles_AppUsers">
+            <End Role="AppUsers" EntitySet="AppUsers" />
+            <End Role="AppUserProfiles" EntitySet="AppUserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEvents_DeviceTypes" Association="Self.FK_VaultEvents_DeviceTypes">
+            <End Role="DeviceTypes" EntitySet="DeviceTypes" />
+            <End Role="VaultEvents" EntitySet="VaultEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultAmountQuantities_VaultAmounts" Association="Self.FK_VaultAmountQuantities_VaultAmounts">
+            <End Role="VaultAmounts" EntitySet="VaultAmounts" />
+            <End Role="VaultAmountQuantities" EntitySet="VaultAmountQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultAmountQuantities_VaultAmountTypes" Association="Self.FK_VaultAmountQuantities_VaultAmountTypes">
+            <End Role="VaultAmountTypes" EntitySet="VaultAmountTypes" />
+            <End Role="VaultAmountQuantities" EntitySet="VaultAmountQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultAmountQuantities_VaultCurrencies" Association="Self.FK_VaultAmountQuantities_VaultCurrencies">
+            <End Role="VaultCurrencies" EntitySet="VaultCurrencies" />
+            <End Role="VaultAmountQuantities" EntitySet="VaultAmountQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultAmountQuantities_VaultCurrencyDenominations" Association="Self.FK_VaultAmountQuantities_VaultCurrencyDenominations">
+            <End Role="VaultCurrencyDenominations" EntitySet="VaultCurrencyDenominations" />
+            <End Role="VaultAmountQuantities" EntitySet="VaultAmountQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultAmounts_VaultEvents" Association="Self.FK_VaultAmounts_VaultEvents">
+            <End Role="VaultEvents" EntitySet="VaultEvents" />
+            <End Role="VaultAmounts" EntitySet="VaultAmounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultAmounts_Vaults" Association="Self.FK_VaultAmounts_Vaults">
+            <End Role="VaultCurrencies" EntitySet="VaultCurrencies" />
+            <End Role="VaultAmounts" EntitySet="VaultAmounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultAmounts_Vaults1" Association="Self.FK_VaultAmounts_Vaults1">
+            <End Role="Vaults" EntitySet="Vaults" />
+            <End Role="VaultAmounts" EntitySet="VaultAmounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCashOrderQuantities_Currencies" Association="Self.FK_VaultCashOrderQuantities_Currencies">
+            <End Role="VaultCurrencies" EntitySet="VaultCurrencies" />
+            <End Role="VaultCashOrderQuantities" EntitySet="VaultCashOrderQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCashOrderQuantities_VaultCashOrders" Association="Self.FK_VaultCashOrderQuantities_VaultCashOrders">
+            <End Role="VaultCashOrders" EntitySet="VaultCashOrders" />
+            <End Role="VaultCashOrderQuantities" EntitySet="VaultCashOrderQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCashOrderQuantities_VaultCurrencyDenominations" Association="Self.FK_VaultCashOrderQuantities_VaultCurrencyDenominations">
+            <End Role="VaultCurrencyDenominations" EntitySet="VaultCurrencyDenominations" />
+            <End Role="VaultCashOrderQuantities" EntitySet="VaultCashOrderQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCashOrders_CashOrderStatuses" Association="Self.FK_VaultCashOrders_CashOrderStatuses">
+            <End Role="VaultCashOrderStatuses" EntitySet="VaultCashOrderStatuses" />
+            <End Role="VaultCashOrders" EntitySet="VaultCashOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCashOrders_Vaults" Association="Self.FK_VaultCashOrders_Vaults">
+            <End Role="Vaults" EntitySet="Vaults" />
+            <End Role="VaultCashOrders" EntitySet="VaultCashOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCashOrders_Vaults1" Association="Self.FK_VaultCashOrders_Vaults1">
+            <End Role="Vaults" EntitySet="Vaults" />
+            <End Role="VaultCashOrders" EntitySet="VaultCashOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCashPoints_Vaults" Association="Self.FK_VaultCashPoints_Vaults">
+            <End Role="Vaults" EntitySet="Vaults" />
+            <End Role="VaultCashPoints" EntitySet="VaultCashPoints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultCurrencyDenominations_VaultCurrencies" Association="Self.FK_VaultCurrencyDenominations_VaultCurrencies">
+            <End Role="VaultCurrencies" EntitySet="VaultCurrencies" />
+            <End Role="VaultCurrencyDenominations" EntitySet="VaultCurrencyDenominations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEventAmounts_Currencies" Association="Self.FK_VaultEventAmounts_Currencies">
+            <End Role="VaultCurrencies" EntitySet="VaultCurrencies" />
+            <End Role="VaultEventAmounts" EntitySet="VaultEventAmounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEventDetails_Currencies" Association="Self.FK_VaultEventDetails_Currencies">
+            <End Role="VaultCurrencies" EntitySet="VaultCurrencies" />
+            <End Role="VaultEventQuantities" EntitySet="VaultEventQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEventQuantities_VaultCurrencyDenominations" Association="Self.FK_VaultEventQuantities_VaultCurrencyDenominations">
+            <End Role="VaultCurrencyDenominations" EntitySet="VaultCurrencyDenominations" />
+            <End Role="VaultEventQuantities" EntitySet="VaultEventQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEventAmounts_VaultEvents" Association="Self.FK_VaultEventAmounts_VaultEvents">
+            <End Role="VaultEvents" EntitySet="VaultEvents" />
+            <End Role="VaultEventAmounts" EntitySet="VaultEventAmounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEventDetails_VaultEvents" Association="Self.FK_VaultEventDetails_VaultEvents">
+            <End Role="VaultEvents" EntitySet="VaultEvents" />
+            <End Role="VaultEventQuantities" EntitySet="VaultEventQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEvents_ServiceCompanies" Association="Self.FK_VaultEvents_ServiceCompanies">
+            <End Role="VaultServiceCompanies" EntitySet="VaultServiceCompanies" />
+            <End Role="VaultEvents" EntitySet="VaultEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEvents_VaultEventTypes" Association="Self.FK_VaultEvents_VaultEventTypes">
+            <End Role="VaultEventTypes" EntitySet="VaultEventTypes" />
+            <End Role="VaultEvents" EntitySet="VaultEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultEvents_Vaults" Association="Self.FK_VaultEvents_Vaults">
+            <End Role="Vaults" EntitySet="Vaults" />
+            <End Role="VaultEvents" EntitySet="VaultEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NetworkNodes_NetworkNodeTypes" Association="Self.FK_NetworkNodes_NetworkNodeTypes">
+            <End Role="VaultNetworkNodeTypes" EntitySet="VaultNetworkNodeTypes" />
+            <End Role="VaultNetworkNodes" EntitySet="VaultNetworkNodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultRecepients_Vaults" Association="Self.FK_VaultRecepients_Vaults">
+            <End Role="Vaults" EntitySet="Vaults" />
+            <End Role="VaultRecepients" EntitySet="VaultRecepients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VaultRecepients_Vaults_VaultRecepeintId" Association="Self.FK_VaultRecepients_Vaults_VaultRecepeintId">
+            <End Role="Vaults" EntitySet="Vaults" />
+            <End Role="VaultRecepients" EntitySet="VaultRecepients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vaults_ServiceCompanies" Association="Self.FK_Vaults_ServiceCompanies">
+            <End Role="VaultServiceCompanies" EntitySet="VaultServiceCompanies" />
+            <End Role="Vaults" EntitySet="Vaults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vaults_VaultTypes" Association="Self.FK_Vaults_VaultTypes">
+            <End Role="VaultTypes" EntitySet="VaultTypes" />
+            <End Role="Vaults" EntitySet="Vaults" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VaultsModelStoreContainer" CdmEntityContainer="VaultsEntities">
+          <EntitySetMapping Name="AppChartCategories">
+            <EntityTypeMapping TypeName="VaultsModel.AppChartCategory">
+              <MappingFragment StoreEntitySet="AppChartCategories">
+                <ScalarProperty Name="ChartCategoryID" ColumnName="ChartCategoryID" />
+                <ScalarProperty Name="ChartCategory" ColumnName="ChartCategory" />
+                <ScalarProperty Name="ChartCategoryX" ColumnName="ChartCategoryX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppCharts">
+            <EntityTypeMapping TypeName="VaultsModel.AppChart">
+              <MappingFragment StoreEntitySet="AppCharts">
+                <ScalarProperty Name="ChartID" ColumnName="ChartID" />
+                <ScalarProperty Name="ChartCategoryID" ColumnName="ChartCategoryID" />
+                <ScalarProperty Name="ChartName" ColumnName="ChartName" />
+                <ScalarProperty Name="ChartDescription" ColumnName="ChartDescription" />
+                <ScalarProperty Name="ChartNameX" ColumnName="ChartNameX" />
+                <ScalarProperty Name="ChartDescriptionX" ColumnName="ChartDescriptionX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppModules">
+            <EntityTypeMapping TypeName="VaultsModel.AppModule">
+              <MappingFragment StoreEntitySet="AppModules">
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="ModuleX" ColumnName="ModuleX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppPermissions">
+            <EntityTypeMapping TypeName="VaultsModel.AppPermission">
+              <MappingFragment StoreEntitySet="AppPermissions">
+                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="PermissionX" ColumnName="PermissionX" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DescriptionX" ColumnName="DescriptionX" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppPictures">
+            <EntityTypeMapping TypeName="VaultsModel.AppPicture">
+              <MappingFragment StoreEntitySet="AppPictures">
+                <ScalarProperty Name="PictureID" ColumnName="PictureID" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppRoleModules">
+            <EntityTypeMapping TypeName="VaultsModel.AppRoleModule">
+              <MappingFragment StoreEntitySet="AppRoleModules">
+                <ScalarProperty Name="EntryID" ColumnName="EntryID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppRolePermissions">
+            <EntityTypeMapping TypeName="VaultsModel.AppRolePermission">
+              <MappingFragment StoreEntitySet="AppRolePermissions">
+                <ScalarProperty Name="EntryID" ColumnName="EntryID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppRoles">
+            <EntityTypeMapping TypeName="VaultsModel.AppRole">
+              <MappingFragment StoreEntitySet="AppRoles">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="IsManager" ColumnName="IsManager" />
+                <ScalarProperty Name="IsBuiltIn" ColumnName="IsBuiltIn" />
+                <ScalarProperty Name="WorkingTimeStart1" ColumnName="WorkingTimeStart1" />
+                <ScalarProperty Name="WorkingTimeEnd1" ColumnName="WorkingTimeEnd1" />
+                <ScalarProperty Name="WorkingTimeStart2" ColumnName="WorkingTimeStart2" />
+                <ScalarProperty Name="WorkingTimeEnd2" ColumnName="WorkingTimeEnd2" />
+                <ScalarProperty Name="WorkingTimeStart3" ColumnName="WorkingTimeStart3" />
+                <ScalarProperty Name="WorkingTimeEnd3" ColumnName="WorkingTimeEnd3" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Description_ru" ColumnName="Description_ru" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppSettings">
+            <EntityTypeMapping TypeName="VaultsModel.AppSetting">
+              <MappingFragment StoreEntitySet="AppSettings">
+                <ScalarProperty Name="SettingID" ColumnName="SettingID" />
+                <ScalarProperty Name="Setting" ColumnName="Setting" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DescriptionX" ColumnName="DescriptionX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppStaffs">
+            <EntityTypeMapping TypeName="VaultsModel.AppStaff">
+              <MappingFragment StoreEntitySet="AppStaffs">
+                <ScalarProperty Name="EntryID" ColumnName="EntryID" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppUserCompanies">
+            <EntityTypeMapping TypeName="VaultsModel.AppUserCompany">
+              <MappingFragment StoreEntitySet="AppUserCompanies">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyShortName" ColumnName="CompanyShortName" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppUserCredentials">
+            <EntityTypeMapping TypeName="VaultsModel.AppUserCredential">
+              <MappingFragment StoreEntitySet="AppUserCredentials">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="IsAdministrator" ColumnName="IsAdministrator" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+                <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppUserInfos">
+            <EntityTypeMapping TypeName="VaultsModel.AppUserInfo">
+              <MappingFragment StoreEntitySet="AppUserInfos">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EMailAddress" ColumnName="EMailAddress" />
+                <ScalarProperty Name="PhoneNumbers" ColumnName="PhoneNumbers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppUserProfiles">
+            <EntityTypeMapping TypeName="VaultsModel.AppUserProfile">
+              <MappingFragment StoreEntitySet="AppUserProfiles">
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="PropertyValue" ColumnName="PropertyValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppUsers">
+            <EntityTypeMapping TypeName="VaultsModel.AppUser">
+              <MappingFragment StoreEntitySet="AppUsers">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
+                <ScalarProperty Name="FriendlyName" ColumnName="FriendlyName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceTypes">
+            <EntityTypeMapping TypeName="VaultsModel.DeviceType">
+              <MappingFragment StoreEntitySet="DeviceTypes">
+                <ScalarProperty Name="DeviceTypeId" ColumnName="DeviceTypeId" />
+                <ScalarProperty Name="DeviceType1" ColumnName="DeviceType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="VaultsModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultAmountQuantities">
+            <EntityTypeMapping TypeName="VaultsModel.VaultAmountQuantity">
+              <MappingFragment StoreEntitySet="VaultAmountQuantities">
+                <ScalarProperty Name="VaultAmountQuantityId" ColumnName="VaultAmountQuantityId" />
+                <ScalarProperty Name="VaultAmountId" ColumnName="VaultAmountId" />
+                <ScalarProperty Name="VaultAmountTypeId" ColumnName="VaultAmountTypeId" />
+                <ScalarProperty Name="VaultCurrencyDenominationId" ColumnName="VaultCurrencyDenominationId" />
+                <ScalarProperty Name="VaultCurrencyId" ColumnName="VaultCurrencyId" />
+                <ScalarProperty Name="Denomination" ColumnName="Denomination" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultAmounts">
+            <EntityTypeMapping TypeName="VaultsModel.VaultAmount">
+              <MappingFragment StoreEntitySet="VaultAmounts">
+                <ScalarProperty Name="VaultAmountId" ColumnName="VaultAmountId" />
+                <ScalarProperty Name="VaultId" ColumnName="VaultId" />
+                <ScalarProperty Name="VaultCurrencyId" ColumnName="VaultCurrencyId" />
+                <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VaultEventId" ColumnName="VaultEventId" />
+                <ScalarProperty Name="VaultRemainder" ColumnName="VaultRemainder" />
+                <ScalarProperty Name="CashInTransitIn" ColumnName="CashInTransitIn" />
+                <ScalarProperty Name="CashInTransitInReserved" ColumnName="CashInTransitInReserved" />
+                <ScalarProperty Name="CashInTransitSent" ColumnName="CashInTransitSent" />
+                <ScalarProperty Name="CashInTransitInPlan" ColumnName="CashInTransitInPlan" />
+                <ScalarProperty Name="CashInTransitOut" ColumnName="CashInTransitOut" />
+                <ScalarProperty Name="CashInTransitOutReserved" ColumnName="CashInTransitOutReserved" />
+                <ScalarProperty Name="CashInTransitOutSent" ColumnName="CashInTransitOutSent" />
+                <ScalarProperty Name="CashInNet" ColumnName="CashInNet" />
+                <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+                <ScalarProperty Name="VaultAmountDateTime" ColumnName="VaultAmountDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultAmountTypes">
+            <EntityTypeMapping TypeName="VaultsModel.VaultAmountType">
+              <MappingFragment StoreEntitySet="VaultAmountTypes">
+                <ScalarProperty Name="VaultAmountTypeId" ColumnName="VaultAmountTypeId" />
+                <ScalarProperty Name="AmountType" ColumnName="AmountType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultCashOrderQuantities">
+            <EntityTypeMapping TypeName="VaultsModel.VaultCashOrderQuantity">
+              <MappingFragment StoreEntitySet="VaultCashOrderQuantities">
+                <ScalarProperty Name="VaultCashOrderQuantitiesId" ColumnName="VaultCashOrderQuantitiesId" />
+                <ScalarProperty Name="VaultCashOrderId" ColumnName="VaultCashOrderId" />
+                <ScalarProperty Name="VaultCurrencyDenominationId" ColumnName="VaultCurrencyDenominationId" />
+                <ScalarProperty Name="VaultCurrencyId" ColumnName="VaultCurrencyId" />
+                <ScalarProperty Name="Denomination" ColumnName="Denomination" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ExchangeRateToBaseCurrency" ColumnName="ExchangeRateToBaseCurrency" />
+                <ScalarProperty Name="AmountBaseCurrency" ColumnName="AmountBaseCurrency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultCashOrders">
+            <EntityTypeMapping TypeName="VaultsModel.VaultCashOrder">
+              <MappingFragment StoreEntitySet="VaultCashOrders">
+                <ScalarProperty Name="VaultCashOrderId" ColumnName="VaultCashOrderId" />
+                <ScalarProperty Name="ToDeviceId" ColumnName="ToDeviceId" />
+                <ScalarProperty Name="FromDeviceId" ColumnName="FromDeviceId" />
+                <ScalarProperty Name="ToTID" ColumnName="ToTID" />
+                <ScalarProperty Name="FromTID" ColumnName="FromTID" />
+                <ScalarProperty Name="CashOrderDate" ColumnName="CashOrderDate" />
+                <ScalarProperty Name="NumberIncrement" ColumnName="NumberIncrement" />
+                <ScalarProperty Name="VaultCashOrderStatusId" ColumnName="VaultCashOrderStatusId" />
+                <ScalarProperty Name="AcceptedBy" ColumnName="AcceptedBy" />
+                <ScalarProperty Name="AcceptedByNotes" ColumnName="AcceptedByNotes" />
+                <ScalarProperty Name="AcceptedDate" ColumnName="AcceptedDate" />
+                <ScalarProperty Name="DeclinedBy" ColumnName="DeclinedBy" />
+                <ScalarProperty Name="DeclinedByNotes" ColumnName="DeclinedByNotes" />
+                <ScalarProperty Name="DeclinedDate" ColumnName="DeclinedDate" />
+                <ScalarProperty Name="SentToExecuteBy" ColumnName="SentToExecuteBy" />
+                <ScalarProperty Name="SentToExecuteByNotes" ColumnName="SentToExecuteByNotes" />
+                <ScalarProperty Name="SentToExecuteDate" ColumnName="SentToExecuteDate" />
+                <ScalarProperty Name="CompletedBy" ColumnName="CompletedBy" />
+                <ScalarProperty Name="CompletedByNotes" ColumnName="CompletedByNotes" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="LastChangesDateTime" ColumnName="LastChangesDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultCashOrderStatuses">
+            <EntityTypeMapping TypeName="VaultsModel.VaultCashOrderStatus">
+              <MappingFragment StoreEntitySet="VaultCashOrderStatuses">
+                <ScalarProperty Name="VaultCashOrderStatusId" ColumnName="VaultCashOrderStatusId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultCashPoints">
+            <EntityTypeMapping TypeName="VaultsModel.VaultCashPoint">
+              <MappingFragment StoreEntitySet="VaultCashPoints">
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+                <ScalarProperty Name="VaultId" ColumnName="VaultId" />
+                <ScalarProperty Name="CashPointId" ColumnName="CashPointId" />
+                <ScalarProperty Name="CashPointTID" ColumnName="CashPointTID" />
+                <ScalarProperty Name="IsReturnCashToVault" ColumnName="IsReturnCashToVault" />
+                <ScalarProperty Name="IsReturnBadCashToVault" ColumnName="IsReturnBadCashToVault" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultCurrencies">
+            <EntityTypeMapping TypeName="VaultsModel.VaultCurrency">
+              <MappingFragment StoreEntitySet="VaultCurrencies">
+                <ScalarProperty Name="VaultCurrencyId" ColumnName="VaultCurrencyId" />
+                <ScalarProperty Name="VaultCurrencyCode" ColumnName="VaultCurrencyCode" />
+                <ScalarProperty Name="VaultCurrencyName" ColumnName="VaultCurrencyName" />
+                <ScalarProperty Name="IsBase" ColumnName="IsBase" />
+                <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+                <ScalarProperty Name="SortBy" ColumnName="SortBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultCurrencyDenominations">
+            <EntityTypeMapping TypeName="VaultsModel.VaultCurrencyDenomination">
+              <MappingFragment StoreEntitySet="VaultCurrencyDenominations">
+                <ScalarProperty Name="VaultCurrencyDenominationId" ColumnName="VaultCurrencyDenominationId" />
+                <ScalarProperty Name="DenominationName" ColumnName="DenominationName" />
+                <ScalarProperty Name="Denomination" ColumnName="Denomination" />
+                <ScalarProperty Name="VaultCurrencyId" ColumnName="VaultCurrencyId" />
+                <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultEventAmounts">
+            <EntityTypeMapping TypeName="VaultsModel.VaultEventAmount">
+              <MappingFragment StoreEntitySet="VaultEventAmounts">
+                <ScalarProperty Name="VaultEventAmountId" ColumnName="VaultEventAmountId" />
+                <ScalarProperty Name="VaultEventId" ColumnName="VaultEventId" />
+                <ScalarProperty Name="VaultCurrencyId" ColumnName="VaultCurrencyId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ExchangeRateToBaseCurrency" ColumnName="ExchangeRateToBaseCurrency" />
+                <ScalarProperty Name="AmountBaseCurrency" ColumnName="AmountBaseCurrency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultEventQuantities">
+            <EntityTypeMapping TypeName="VaultsModel.VaultEventQuantity">
+              <MappingFragment StoreEntitySet="VaultEventQuantities">
+                <ScalarProperty Name="VaultEventQuantityId" ColumnName="VaultEventQuantityId" />
+                <ScalarProperty Name="VaultEventId" ColumnName="VaultEventId" />
+                <ScalarProperty Name="VaultCurrencyId" ColumnName="VaultCurrencyId" />
+                <ScalarProperty Name="VaultCurrencyDenominationId" ColumnName="VaultCurrencyDenominationId" />
+                <ScalarProperty Name="Denomination" ColumnName="Denomination" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultEvents">
+            <EntityTypeMapping TypeName="VaultsModel.VaultEvent">
+              <MappingFragment StoreEntitySet="VaultEvents">
+                <ScalarProperty Name="VaultEventId" ColumnName="VaultEventId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="SecondDeviceId" ColumnName="SecondDeviceId" />
+                <ScalarProperty Name="SecondDeviceTypeId" ColumnName="SecondDeviceTypeId" />
+                <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="NumberIncrement" ColumnName="NumberIncrement" />
+                <ScalarProperty Name="VaultServiceCompanyId" ColumnName="VaultServiceCompanyId" />
+                <ScalarProperty Name="DeviceAddress" ColumnName="DeviceAddress" />
+                <ScalarProperty Name="VaultEventTypeId" ColumnName="VaultEventTypeId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="PreviousEventId" ColumnName="PreviousEventId" />
+                <ScalarProperty Name="FriendlyName" ColumnName="FriendlyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultEventTypes">
+            <EntityTypeMapping TypeName="VaultsModel.VaultEventType">
+              <MappingFragment StoreEntitySet="VaultEventTypes">
+                <ScalarProperty Name="VaultEventTypeId" ColumnName="VaultEventTypeId" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultNetworkNodes">
+            <EntityTypeMapping TypeName="VaultsModel.VaultNetworkNode">
+              <MappingFragment StoreEntitySet="VaultNetworkNodes">
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="VaultNodeId" ColumnName="VaultNodeId" />
+                <ScalarProperty Name="VaultNodeTypeId" ColumnName="VaultNodeTypeId" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="VaultNodeName" ColumnName="VaultNodeName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsAssigned" ColumnName="IsAssigned" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="NodeCount" ColumnName="NodeCount" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="ZoomLevel" ColumnName="ZoomLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultNetworkNodeTypes">
+            <EntityTypeMapping TypeName="VaultsModel.VaultNetworkNodeType">
+              <MappingFragment StoreEntitySet="VaultNetworkNodeTypes">
+                <ScalarProperty Name="VaultNodeTypeId" ColumnName="VaultNodeTypeId" />
+                <ScalarProperty Name="VaultNodeCategoryId" ColumnName="VaultNodeCategoryId" />
+                <ScalarProperty Name="VaultNodeType" ColumnName="VaultNodeType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultRecepients">
+            <EntityTypeMapping TypeName="VaultsModel.VaultRecepient">
+              <MappingFragment StoreEntitySet="VaultRecepients">
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+                <ScalarProperty Name="VaultId" ColumnName="VaultId" />
+                <ScalarProperty Name="VaultRecepientId" ColumnName="VaultRecepientId" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vaults">
+            <EntityTypeMapping TypeName="VaultsModel.Vault">
+              <MappingFragment StoreEntitySet="Vaults">
+                <ScalarProperty Name="VaultId" ColumnName="VaultId" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="VaultTypeId" ColumnName="VaultTypeId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="VaultAddress" ColumnName="VaultAddress" />
+                <ScalarProperty Name="VaultServiceCompanyId" ColumnName="VaultServiceCompanyId" />
+                <ScalarProperty Name="WorkingTimeStart" ColumnName="WorkingTimeStart" />
+                <ScalarProperty Name="WorkingTimeEnd" ColumnName="WorkingTimeEnd" />
+                <ScalarProperty Name="OrderDuration" ColumnName="OrderDuration" />
+                <ScalarProperty Name="MaxLimit" ColumnName="MaxLimit" />
+                <ScalarProperty Name="MinLimit" ColumnName="MinLimit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultServiceCompanies">
+            <EntityTypeMapping TypeName="VaultsModel.VaultServiceCompany">
+              <MappingFragment StoreEntitySet="VaultServiceCompanies">
+                <ScalarProperty Name="VaultServiceCompanyId" ColumnName="VaultServiceCompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyShortName" ColumnName="CompanyShortName" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaultTypes">
+            <EntityTypeMapping TypeName="VaultsModel.VaultType">
+              <MappingFragment StoreEntitySet="VaultTypes">
+                <ScalarProperty Name="VaultTypeId" ColumnName="VaultTypeId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

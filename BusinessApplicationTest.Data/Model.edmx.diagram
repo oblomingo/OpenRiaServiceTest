@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a60a9f7d5c3549cfbe69c6834154acac" Name="Diagram1">
+        <EntityTypeShape EntityType="VaultsModel.AppChartCategory" Width="1.5" PointX="10.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.AppChart" Width="1.5" PointX="13" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.AppModule" Width="1.5" PointX="11.5" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.AppPermission" Width="1.5" PointX="13.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.AppPicture" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.AppRoleModule" Width="1.5" PointX="16" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.AppRolePermission" Width="1.5" PointX="16" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.AppRole" Width="1.5" PointX="13.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.AppSetting" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.AppStaff" Width="1.5" PointX="21.25" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.AppUserCompany" Width="1.5" PointX="16.75" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.AppUserCredential" Width="1.5" PointX="21.25" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.AppUserInfo" Width="1.5" PointX="24.25" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.AppUserProfile" Width="1.5" PointX="21.25" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.AppUser" Width="1.5" PointX="19" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.DeviceType" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.sysdiagram" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultAmountQuantity" Width="1.5" PointX="13.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultAmount" Width="1.5" PointX="8.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultAmountType" Width="1.5" PointX="11.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultCashOrderQuantity" Width="1.5" PointX="16.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultCashOrder" Width="1.5" PointX="11.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultCashOrderStatus" Width="1.5" PointX="9" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultCashPoint" Width="1.5" PointX="8.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultCurrency" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultCurrencyDenomination" Width="1.5" PointX="11.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultEventAmount" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultEventQuantity" Width="1.5" PointX="5.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultEvent" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultEventType" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultNetworkNode" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultNetworkNodeType" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultRecepient" Width="1.5" PointX="8.25" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.Vault" Width="1.5" PointX="6" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultServiceCompany" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaultsModel.VaultType" Width="1.5" PointX="3.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="VaultsModel.FK_AppCharts_AppChartCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_AppPermissions_AppModules" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_AppRoleModules_AppModules" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_AppRolePermissions_AppPermissions" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_AppRoleModules_AppRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_AppRolePermissions_AppRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_AppUsers_AppRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_AppStaffs_AppUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_AppStaffs_AppUsers1" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_AppUserInfos_AppUserCompanies" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_AppUsers_AppUserCompanies" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_AppUserCredentials_AppUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_AppUserInfos_AppUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_AppUserProfiles_AppUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultEvents_DeviceTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultAmountQuantities_VaultAmounts" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultAmountQuantities_VaultAmountTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultAmountQuantities_VaultCurrencies" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultAmountQuantities_VaultCurrencyDenominations" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultAmounts_VaultEvents" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultAmounts_Vaults" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultAmounts_Vaults1" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultCashOrderQuantities_Currencies" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultCashOrderQuantities_VaultCashOrders" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultCashOrderQuantities_VaultCurrencyDenominations" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultCashOrders_CashOrderStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultCashOrders_Vaults" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultCashOrders_Vaults1" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultCashPoints_Vaults" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultCurrencyDenominations_VaultCurrencies" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultEventAmounts_Currencies" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultEventDetails_Currencies" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultEventQuantities_VaultCurrencyDenominations" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultEventAmounts_VaultEvents" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultEventDetails_VaultEvents" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultEvents_ServiceCompanies" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultEvents_VaultEventTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultEvents_Vaults" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_NetworkNodes_NetworkNodeTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultRecepients_Vaults" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_VaultRecepients_Vaults_VaultRecepeintId" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_Vaults_ServiceCompanies" ManuallyRouted="false" />
+        <AssociationConnector Association="VaultsModel.FK_Vaults_VaultTypes" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
