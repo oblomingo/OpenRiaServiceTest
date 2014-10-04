@@ -134,6 +134,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessApplicationTest.Data.Currencies\BusinessApplicationTest.Data.Currencies.csproj">
+      <Project>{bcd64bbe-5675-4a87-a025-b4e320f3ae83}</Project>
+      <Name>BusinessApplicationTest.Data.Currencies</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BusinessApplicationTest.Data\BusinessApplicationTest.Data.csproj">
       <Project>{f6058c06-d8df-4a39-a1e4-12fada2dec12}</Project>
       <Name>BusinessApplicationTest.Data</Name>

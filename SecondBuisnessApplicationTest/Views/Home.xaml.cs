@@ -1,4 +1,8 @@
-﻿namespace SecondBuisnessApplicationTest
+﻿using System.Linq;
+using BusinessApplicationTest.Web;
+using OpenRiaServices.Controls;
+
+namespace SecondBuisnessApplicationTest
 {
     using System.Windows.Controls;
     using System.Windows.Navigation;
@@ -14,8 +18,19 @@
         public Home()
         {
             InitializeComponent();
+            LoadDataSource();
+        }
 
-            this.Title = ApplicationStrings.HomePageTitle;
+        private void LoadDataSource()
+        {
+            var source = new DomainDataSource
+            {
+                DomainContext = new CurrencyDomainContext(),
+                QueryName = "GetVaultCurrencies",
+                AutoLoad = true,
+            };
+            source.LoadedData += DataSourceLoadedData;
+            source.Load();
         }
 
         /// <summary>
@@ -23,6 +38,14 @@
         /// </summary>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+        }
+
+        private void DataSourceLoadedData(object sender, LoadedDataEventArgs e)
+        {
+            var domainDataSource = sender as DomainDataSource;
+            if (domainDataSource != null)
+                DataGrid.ItemsSource = domainDataSource.DataView.Cast<Vault>().ToList();
+            ;
         }
     }
 }

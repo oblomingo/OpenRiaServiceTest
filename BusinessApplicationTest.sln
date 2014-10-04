@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondBuisnessApplicationTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondBuisnessApplicationTest.Web", "SecondBuisnessApplicationTest.Web\SecondBuisnessApplicationTest.Web.csproj", "{00F690B6-A721-484C-9D54-27E010C3E437}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessApplicationTest.Data.Currencies", "BusinessApplicationTest.Data.Currencies\BusinessApplicationTest.Data.Currencies.csproj", "{BCD64BBE-5675-4A87-A025-B4E320F3AE83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{00F690B6-A721-484C-9D54-27E010C3E437}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00F690B6-A721-484C-9D54-27E010C3E437}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00F690B6-A721-484C-9D54-27E010C3E437}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCD64BBE-5675-4A87-A025-B4E320F3AE83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCD64BBE-5675-4A87-A025-B4E320F3AE83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCD64BBE-5675-4A87-A025-B4E320F3AE83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCD64BBE-5675-4A87-A025-B4E320F3AE83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
