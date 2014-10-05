@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Configuration;
 using System.Web.Security;
 using BusinessApplicationTest.Data;
 using BusinessApplicationTest.Data.Enum;
 using BusinessApplicationTest.Data.Helpers;
 using BusinessApplicationTest.Web;
+using OpenRiaServices.DomainServices.EntityFramework;
+using OpenRiaServices.DomainServices.Hosting;
+using OpenRiaServices.DomainServices.Server.ApplicationServices;
 
 namespace SecondBuisnessApplicationTest.Web
 {
-    using System.Security.Authentication;
-    using OpenRiaServices.DomainServices.Hosting;
-    using OpenRiaServices.DomainServices.Server;
-    using OpenRiaServices.DomainServices.Server.ApplicationServices;
-    using System.Threading;
+
 
     // TODO: Switch to a secure endpoint when deploying the application.
     //       The user's name and password should only be passed using https.
@@ -30,7 +30,7 @@ namespace SecondBuisnessApplicationTest.Web
     /// Most of the functionality is already provided by the AuthenticationBase class.
     /// </summary>
     [EnableClientAccess]
-    public class AuthenticationService : AuthenticationBase<User>
+    public class AuthenticationService : DbDomainService<VaultsEntities>, IAuthentication<User> //AuthenticationBase<User>
     {
         #region "Private Data"
         private static readonly User DefaultUser = new User
@@ -51,7 +51,7 @@ namespace SecondBuisnessApplicationTest.Web
         /// Gets anonymous User when user is not authenticated.
         /// </summary>
         /// <returns><c>DefaultUser</c></returns>
-        protected override User GetAnonymousUser()
+        protected User GetAnonymousUser()
         {
             return AuthenticationService.DefaultUser;
         }
@@ -60,11 +60,11 @@ namespace SecondBuisnessApplicationTest.Web
         /// </summary>
         /// <param name="principal"><c>IPrincipal</c> either <c>Authenticated</c> or not</param>
         /// <returns>Object of type <c>User</c> when <c>Authenticated</c> otherwise <c>DefaultUser</c></returns>
-        protected override User GetAuthenticatedUser(System.Security.Principal.IPrincipal principal)
+        protected User GetAuthenticatedUser(System.Security.Principal.IPrincipal principal)
         {
             if (principal.Identity.IsAuthenticated)
             {
-                return this.GetUserByName(principal.Identity.Name);
+                return this.GetUser(principal.Identity.Name);
             }
             else
             {
@@ -75,17 +75,49 @@ namespace SecondBuisnessApplicationTest.Web
         /// Returns <c>DefaultUser</c>
         /// </summary>
         /// <returns><c>DefaultUser</c></returns>
-        protected override User CreateUser()
+        protected User CreateUser()
         {
             return AuthenticationService.DefaultUser;
         }
+        public User Login(string userName, string password, bool isPersistent, string customData)
+        {
+            if (this.ValidateUser(userName, password))
+            {
+                FormsAuthentication.SetAuthCookie(userName, isPersistent);
+                return this.GetUser(userName);
+            }
+            return null;
+        }
+
+        public User Logout()
+        {
+            FormsAuthentication.SignOut();
+            return AuthenticationService.DefaultUser;
+        }
+
+        public User GetUser()
+        {
+            if ((this.ServiceContext != null) &&
+                (this.ServiceContext.User != null) &&
+                this.ServiceContext.User.Identity.IsAuthenticated)
+            {
+                return this.GetUser(this.ServiceContext.User.Identity.Name);
+            }
+            return AuthenticationService.DefaultUser;
+        }
+
+        public void UpdateUser(User user)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Validates a user by provided <c>friendlyName</c> and <c>password</c>
         /// </summary>
         /// <param name="userName">friendlyName</param>
         /// <param name="password">password</param>
         /// <returns><c>true</c> if user is valid otherwise returns <c>false</c></returns>
-        protected override bool ValidateUser(string userName, string password)
+        protected bool ValidateUser(string userName, string password)
         {
             using (UsersAndRolesDomainService users = new UsersAndRolesDomainService())
             {
@@ -125,16 +157,16 @@ namespace SecondBuisnessApplicationTest.Web
         /// Throws <c>NotImplementedException</c> because a <c>User</c> cannot be updated in this method.  
         /// </summary>
         /// <param name="user">Not used</param>
-        protected override void UpdateUserCore(User user)
+        protected void UpdateUserCore(User user)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
         /// <summary>
         /// Sets <c>FormsAuthentication.SetAuthCookie</c> for provided authenticated <c>IPrincipal</c> 
         /// </summary>
         /// <param name="principal"><c>IPrincipal</c></param>
         /// <param name="isPersistent">Indicates whether to create persistent <c>Cookie</c></param>
-        protected override void IssueAuthenticationToken(System.Security.Principal.IPrincipal principal, bool isPersistent)
+        protected void IssueAuthenticationToken(System.Security.Principal.IPrincipal principal, bool isPersistent)
         {
             if (principal.Identity.IsAuthenticated)
             {
@@ -142,14 +174,14 @@ namespace SecondBuisnessApplicationTest.Web
                 FormsAuthentication.SetAuthCookie(userName, isPersistent /*, cookiePath*/);
             }
             //
-            base.IssueAuthenticationToken(principal, isPersistent);
+            //base.IssueAuthenticationToken(principal, isPersistent);
         }
         /// <summary>
         /// Gets <c>User</c> by its <c>friendlyName</c>
         /// </summary>
         /// <param name="userName">friendlyName</param>
         /// <returns>Object of type <c>User</c></returns>
-        private User GetUserByName(string userName)
+        private User GetUser(string userName)
         {
             AppUser user = null;
             ////

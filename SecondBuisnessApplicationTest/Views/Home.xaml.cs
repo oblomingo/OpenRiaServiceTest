@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using BusinessApplicationTest.Data.Currencies;
 using BusinessApplicationTest.Web;
 using OpenRiaServices.Controls;
 

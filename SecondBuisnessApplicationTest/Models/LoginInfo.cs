@@ -13,6 +13,7 @@
     {
         private string userName;
         private bool rememberMe;
+        private string testParameter = "yes";
         private LoginOperation currentLoginOperation;
 
         /// <summary>
@@ -155,7 +156,7 @@
         /// </summary>
         public LoginParameters ToLoginParameters()
         {
-            return new LoginParameters(this.UserName, this.Password, this.RememberMe, null);
+            return new LoginParameters(this.UserName, this.Password, this.RememberMe, this.testParameter);
         }
     }
 }
