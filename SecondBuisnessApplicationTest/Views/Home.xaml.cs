@@ -45,7 +45,7 @@ namespace SecondBuisnessApplicationTest
         {
             var domainDataSource = sender as DomainDataSource;
             if (domainDataSource != null)
-                DataGrid.ItemsSource = domainDataSource.DataView.Cast<Vault>().ToList();
+                DataGrid.ItemsSource = domainDataSource.DataView.Cast<VaultCurrency>().ToList();
             ;
         }
     }

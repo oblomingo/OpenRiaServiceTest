@@ -181,4 +181,7 @@
     <value>Welcome {0}</value>
     <comment>{0} = User.DisplayName property</comment>
   </data>
+  <data name="IsCashLogisticsUser" xml:space="preserve">
+    <value>Use CashLogistics User</value>
+  </data>
 </root>

@@ -13,6 +13,7 @@
     {
         private string userName;
         private bool rememberMe;
+        private bool isCashLogisticsUser;
         private string testParameter = "yes";
         private LoginOperation currentLoginOperation;
 
@@ -89,6 +90,28 @@
         }
 
         /// <summary>
+        /// Gets and sets the value indicating whether the user's authentication information should be recorded for future logins.
+        /// </summary>
+        [Display(Name = "IsCashLogisticsUser", ResourceType = typeof(ApplicationStrings))]
+        public bool IsCashLogisticsUser
+        {
+            get
+            {
+                return this.isCashLogisticsUser;
+            }
+
+            set
+            {
+                if (this.isCashLogisticsUser != value)
+                {
+                    this.ValidateProperty("IsCashLogisticsUser", value);
+                    this.isCashLogisticsUser = value;
+                    this.RaisePropertyChanged("IsCashLogisticsUser");
+                }
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the current login operation.
         /// </summary>
         internal LoginOperation CurrentLoginOperation
@@ -156,7 +179,8 @@
         /// </summary>
         public LoginParameters ToLoginParameters()
         {
-            return new LoginParameters(this.UserName, this.Password, this.RememberMe, this.testParameter);
+            string customData = IsCashLogisticsUser ? "IsCashLogisticsUser" : String.Empty;
+            return new LoginParameters(this.UserName, this.Password, this.RememberMe, customData);
         }
     }
 }

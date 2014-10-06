@@ -81,11 +81,23 @@ namespace SecondBuisnessApplicationTest.Web
         }
         public User Login(string userName, string password, bool isPersistent, string customData)
         {
-            if (this.ValidateUser(userName, password))
+            if (customData == "IsCashLogisticsUser")
             {
-                FormsAuthentication.SetAuthCookie(userName, isPersistent);
-                return this.GetUser(userName);
+                if (this.ValidateCashLogisticsUser(userName, password))
+                {
+                    FormsAuthentication.SetAuthCookie(userName, isPersistent);
+                    return this.GetCashLogisticsUser(userName);
+                }
             }
+            else
+            {
+                if (this.ValidateUser(userName, password))
+                {
+                    FormsAuthentication.SetAuthCookie(userName, isPersistent);
+                    return this.GetUser(userName);
+                }
+            }
+
             return null;
         }
 
@@ -152,6 +164,13 @@ namespace SecondBuisnessApplicationTest.Web
 
             }
             return true;
+        }
+
+        protected bool ValidateCashLogisticsUser(string userName, string password)
+        {
+            if(userName == "admin" && password == "pass")
+                return true;
+            return false;
         }
         /// <summary>
         /// Throws <c>NotImplementedException</c> because a <c>User</c> cannot be updated in this method.  
@@ -261,6 +280,26 @@ namespace SecondBuisnessApplicationTest.Web
                     };
                 }
             }
+        }
+
+        private User GetCashLogisticsUser(string userName)
+        {
+            AppUser user = null;
+
+                    return new User
+                    {
+                        Name = userName,
+                        FriendlyName = userName,
+                        UserID = Guid.NewGuid(),
+                        Role = "Manager",
+                        RoleID = Guid.NewGuid(),
+                        Roles = new List<string>(),
+                        Permissions = new List<int>(),
+                        AddSpecialReports = true,
+                        AutoLogoffMode = true,
+                        AutoLogoffTimeout =TimeSpan.FromMinutes(Convert.ToInt32(30)),
+                        MapsCredentials = "maps"
+                    };
         }
     }
 }
